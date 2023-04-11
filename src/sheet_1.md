@@ -3,10 +3,11 @@
 #### 1) Use a suitable graph theoretical model to solve the following problems:
 **a) Show that in every city at least two of its inhabitants have the same number of neighbours!**
 
-    Let $G = (V,E)$ such that
-        * $v \in V$ if $v$ is an inhabitant of the city and
-        * $(v,w) \in E$ iff $v$ and $w$ are neighbours.
-    Now, we show the (a) by proving that in any simple, undirected graph there exist two vertices which have the same degree:
+Let $G = (V,E)$ such that
+* $v \in V$ if $v$ is an inhabitant of the city and
+* $(v,w) \in E$ iff $v$ and $w$ are neighbours.
+Now, we show the (a) by proving that in any simple, undirected graph there exist two vertices which have the same degree:
+
 -- Proof by contradiction--
 
 Assume a simple, undirected graph $G = (V,E)$, such that $\forall v,w \in V: v \neq w \rightarrow deg(v) \neq deg(w)$.
@@ -33,12 +34,10 @@ In order for all vertices in a graph to have degree 1, each edge in the graph ha
 Therefore we can construct the set of all graphs with only vertices of degree 1, based on their number of edges.
 For $G = (V,E)$, with $|E| = k, k \in \mathbb{N}$:
 
-$$
 \begin{gather*}
 E = \{e_1, \dots , e_k\},\\
 V = \{v_{i1}, v_{i2} | e_i \in E\}
 \end{gather*}
-$$
 
 #### 2) Compute the number of walks of length $l$ from $i$ to $j$ in the following graph:
 ```mermaid
@@ -61,6 +60,7 @@ The number of triangles is defined by the trace (the sum of elements on the main
 **Perform the computation for two graphs of your choice on four vertices.**
 
 #### 3) Show that each of the following four statements is equivalent to the statement "T is a tree":
+
 * (1) Every two nodes of $T$ are connected by exactly one path.
 * (2) T is connected and $\alpha_0(T) = \alpha_1(T) + 1$.
 * (3) T is a minimal, connected graph, i.e., deleting an edge destroys connectivity.
@@ -111,7 +111,9 @@ Let (0) := "T is a tree", i.e. *A graph is a tree iff it is connected, acyclic, 
     * Thus T is the smallest maximal acyclic graph, such that $|V| = |E|+1$.
 
 Since we showed, (2) -> (0) -> (1) -> (3) -> (4) -> (2), we have shown equivalence of all statements by transitivity of implication.
+
 #### 4) Prove that the edge set of an undirected, simple graph can be partitioned into cycles iff every vertex set has even degree.
+
 *Hint:* To prove the existence of a cycle, consider a maximal path and use the even degree condition.
 
 * =>
@@ -146,44 +148,76 @@ Since we showed, (2) -> (0) -> (1) -> (3) -> (4) -> (2), we have shown equivalen
 
 
 #### 5) Let $G = (V,E)$ be an undirected graph with $n$ vertices which does not have any cycle of length 3. Prove:
+
 **1. If $xy \in E$ then $d(x) + d(y) \leq n$.**
-        Let $G = (V,E)$ be an undirected graph such that $|V| = n$ which contains no cycles of length 3.
-        --Proof by contradiction--
-        Assume two nodes $x,y \in V$ such that $d(x) + d(y) > n$, then the nodes $x$ and $y$ are connected to at least $n-1$ other nodes (since they are also connected by an edge themselves).
-        Now, $|V \backslash \{x,y\}| = n-2$ by assumption.
-        Thus, there exists at least one node $z \in V$ such that $xz \in E$ and $yz \in E$ which means $G$ contains a cycle of length 3. Contradiction!
+
+Let $G = (V,E)$ be an undirected graph such that $|V| = n$ which contains no cycles of length 3.
+
+--Proof by contradiction--
+
+Assume two nodes $x,y \in V$ such that $d(x) + d(y) > n$, then the nodes $x$ and $y$ are connected to at least $n-1$ other nodes (since they are also connected by an edge themselves).
+Now, $|V \backslash \{x,y\}| = n-2$ by assumption.
+Thus, there exists at least one node $z \in V$ such that $xz \in E$ and $yz \in E$ which means $G$ contains a cycle of length 3. Contradiction!
+
 **2. The previous inequality $d(x) + d(y) \leq n$ implies that $\sum_{v \in V} d(v)^2 \leq n|E|$.**
-        Since forall edges $xy \in E$, $d(x) + d(y) \leq n$, we know $n*|E| \geq \sum_{vw \in E} d(v) + d(w)$.
-        Now:
-        $\sum_{vw \in E} d(v) + d(w) = \sum_{v \in V} \sum_{1}^{d(v)} d(v)$
-        since for each vertice, its degree is contained in the left sum as many times as it occurs in an edge (i.e. as many times as its degree). Additionally,
-        $\sum_{v \in V} \sum_{1}^{d(v)} d(v) = \sum_{v \in V} d(v)^2$
-        seeing as the left side simply sums up $d(v)$ times $d(v)$. Now we can apply transitivity of equality and get
-        $n* |E| \geq \sum_{v \in V} d(v)^2$
+
+Since forall edges $xy \in E$, $d(x) + d(y) \leq n$, we know $n*|E| \geq \sum_{vw \in E} d(v) + d(w)$.
+Now:
+
+$\sum_{vw \in E} d(v) + d(w) = \sum_{v \in V} \sum_{1}^{d(v)} d(v)$
+
+since for each vertice, its degree is contained in the left sum as many times as it occurs in an edge (i.e. as many times as its degree). Additionally,
+
+$\sum_{v \in V} \sum_{1}^{d(v)} d(v) = \sum_{v \in V} d(v)^2$
+
+seeing as the left side simply sums up $d(v)$ times $d(v)$. Now we can apply transitivity of equality and get
+
+$n* |E| \geq \sum_{v \in V} d(v)^2$
+
 **3. The graph has at most $n^2/4$ edges. *Hint:* Use the Handshaking-Lemma, the Cauchy-Schwarz inequality $(\sum_{i=1}^r a_i b_i)^2 \leq (\sum_{i=1}^r a_i^2) (\sum_{i=1}^r b_i^2)$, and what you have proved so far.**
-    Assume $\sum_{v \in V} d(v)^2 \leq |E| * n$, we apply the Cauchy-Schwarz inequality with $a = d(v)$ and $b=1$ to get
-        $(\sum_{v \in V} d(v) * 1)^2 \leq (\sum_{v \in V} d(v)^2) * (\sum_1^n 1),$
-        i.e.
-        $(\sum_{v \in V} d(v))^2 \leq \sum_{v \in V} d(v)^2 * n$
-        Now, this can be inserted into the Handshaking Lemma, $4*|E|^2 = (\sum_{v \in V} d(v))^2 \leq n * \sum_{v \in V} d(v)^2$
-        And in turn, from exercise 5.2):
-        $4*|E|^2 = (\sum_{v \in V} d(v))^2 \leq n * \sum_{v \in V} d(v)^2 \leq n^2 * |E|$
-        we divide by $n$ and remove the sandwiched inequalities:
-        $\frac{4*|E|^2}{n} \leq n * |E|$
-        now only simple arithmetic transformations: $\frac{4*|E|^2}{n} \leq n * |E| \Leftrightarrow \frac{4m}{n} \leq n \Leftrightarrow 4m \leq n^2 \Leftrightarrow m \leq \frac{n^2}{4}$
+
+Assume $\sum_{v \in V} d(v)^2 \leq |E| * n$, we apply the Cauchy-Schwarz inequality with $a = d(v)$ and $b=1$ to get
+
+$(\sum_{v \in V} d(v) * 1)^2 \leq (\sum_{v \in V} d(v)^2) * (\sum_1^n 1),$
+
+i.e.
+
+$(\sum_{v \in V} d(v))^2 \leq \sum_{v \in V} d(v)^2 * n$
+
+Now, this can be inserted into the Handshaking Lemma,
+
+$4*|E|^2 = (\sum_{v \in V} d(v))^2 \leq n * \sum_{v \in V} d(v)^2$
+
+And in turn, from exercise 5.2):
+
+$4*|E|^2 = (\sum_{v \in V} d(v))^2 \leq n * \sum_{v \in V} d(v)^2 \leq n^2 * |E|$
+
+we divide by $n$ and remove the sandwiched inequalities:
+
+$\frac{4*|E|^2}{n} \leq n * |E|$
+
+now only simple arithmetic transformations:
+
+$\frac{4*|E|^2}{n} \leq n * |E| \Leftrightarrow \frac{4m}{n} \leq n \Leftrightarrow 4m \leq n^2 \Leftrightarrow m \leq \frac{n^2}{4}$
 
 #### 6) Let $G = (V,E)$ and $G' = (V',E')$ be two undirected graphs. A graph isomorphism is a bijective mapping $\phi : V \rightarrow V'$ such that two vertices $x,y \in V$ are adjacent iff $\phi(x)$ and $\phi(y)$ are adjacent. The two graphs $G$ and $G'$ are called isomorphic, if there exists an isomorphism $\phi: V \rightarrow V'$. Prove the following statements:
-* If $G$ and $G'$ are isomorphic graphs and $\phi : V \rightarrow V'$ is an isomorphism, then $d_G(x) = d_G'(\phi(x))$ forall $x \in V$.
-    --Proof by contradiction--
-    Let $x \in V$ be a vertice such that $d_G(x) \neq d_G(\phi(x))$.
-    * Case 1: There exists some node $ y \in V$ such that $\phi(y)$ is adjacent to $\phi(x)$ but $y$ is not adjacent to (x), this contradicts the definition of $\phi$.
-    * Case 2: There exists some node $y \in V$ such that $x$ is adjacent to y, but $\phi(x)$ is not adjacent to $\phi(y)$. This also contradicts the definition of §\phi$.
-    Since we arrive at a contradiction in both cases, $d_G(x) = d_G(\phi(x))$ has to hold forall $x \in V$.
 
-* If $\phi : V \rightarrow V'$ is a bijective mapping satisfying $d_G(x) = d_G(\phi(x))$ forall $x \in V$, then $G$ and $G'$ are not necessarily isomorphic.
+1. If $G$ and $G'$ are isomorphic graphs and $\phi : V \rightarrow V'$ is an isomorphism, then $d_G(x) = d_G'(\phi(x))$ forall $x \in V$.
+
+--Proof by contradiction--
+
+Let $x \in V$ be a vertice such that $d_G(x) \neq d_G(\phi(x))$.
+
+* Case 1: There exists some node $ y \in V$ such that $\phi(y)$ is adjacent to $\phi(x)$ but $y$ is not adjacent to (x), this contradicts the definition of $\phi$.
+* Case 2: There exists some node $y \in V$ such that $x$ is adjacent to y, but $\phi(x)$ is not adjacent to $\phi(y)$. This also contradicts the definition of $\phi$.
+
+Since we arrive at a contradiction in both cases, $d_G(x) = d_G(\phi(x))$ has to hold forall $x \in V$.
+
+2. If $\phi : V \rightarrow V'$ is a bijective mapping satisfying $d_G(x) = d_G(\phi(x))$ forall $x \in V$, then $G$ and $G'$ are not necessarily isomorphic.
     We provide $G$, $G'$ and $\phi$ such that $d_G(x) = d_G(\phi(x))$, but $G$ and $G'$ are not isomorphic.
 
     G:
+
     ```mermaid
     flowchart LR
 
@@ -193,7 +227,9 @@ Since we showed, (2) -> (0) -> (1) -> (3) -> (4) -> (2), we have shown equivalen
         6 --- 4
         classDef myClass fill:#999;
     ```
+
     G':
+
     ```mermaid
     flowchart LR
 
@@ -203,6 +239,7 @@ Since we showed, (2) -> (0) -> (1) -> (3) -> (4) -> (2), we have shown equivalen
         6 --- 1
         classDef myClass fill:#999;
     ```
+
     and $\phi(v_i) = v'_i$ for each $v_i \in V$.
 
     This means, forall $v_i \in V$, $d_G(x) = d_G(\phi(x))$ as all vertices in both graphs have degree 2.
@@ -210,6 +247,7 @@ Since we showed, (2) -> (0) -> (1) -> (3) -> (4) -> (2), we have shown equivalen
     But $G$ and $G'$ are not isomorphic, since $v_5$ and $v_4$ are adjacent but $v_4'$ and $v_5'$ are not.
 
 #### 7) Are the following two graphs isomorphic?
+
 ```graphviz
 graph G1 {
     {rank=same;4,3}
@@ -243,10 +281,14 @@ graph G2 {
         <&#945;>, <&#946;>, <&#947;>, <&#948;>;
 	}
 ```
+
 Yes, we provide the following isomorphism:
     $f(1) = A$, $f(3) = B$, $f(b) = C$, $f(d) = D$, $f(c) = \alpha$, $f(a) = \beta$, $f(2) = \gamma$, $f(4) = \delta$, which is edge preserving and bijective.
+
 #### 8) Let $G = (V,E)$ be a simple graph. Moreover let $G_R$ be its reduction. Prove that $G_R$ is acyclic.
+
 --Proof by contradiction--
+
 Let $G_R$ be a graph reduction which contains a cycle $C$, then $C$ is a walk $V_1^R \rightarrow V_2^R \leadsto V_1^R$. Thus, there exist strongly connected components $V_1, V_2$ in $G$ such that there is a walk from some $v_1 \in V_1$ to some $v_2 \in V_2$ and from $v_2$ to $v_1$. By construction of $G_R$ this means that $v_1$ and $v_2$ have to be in the same component in $G_R$. Contradiction!
 
 #### 9) Find the strongly connected components and the reduction $G_R$ of the graph $G$ below. Furthermore, determine all vertex bases of $G$.
@@ -331,83 +373,102 @@ graph G
     }
 }
 ```
-*Kirchoff's Matrix-Tree Theorem:* If $G=(V,E)$ is an undirected graph and $L$ is its graph Laplacian, then the number $N_T$ of spanning trees contained in $G$ is given by: 1.) Choose a vertex $v_j$ and eliminate the $j$-th row and column from $L$ to get a new matrix $\hat L_j$,
+*Kirchoff's Matrix-Tree Theorem:* If $G=(V,E)$ is an undirected graph and $L$ is its graph Laplacian, then the number $N_T$ of spanning trees contained in $G$ is given by:
+1.) Choose a vertex $v_j$ and eliminate the $j$-th row and column from $L$ to get a new matrix $\hat L_j$,
+
 * Compute $N_T = det(\hat L_j)$ (The number $N_T$ counts spanning trees that are distinct as subgraphs of $G$. The resulting sum of trees that contribute to $N_T$ may be isomorphic.)
 
-    To get all spanning forests of $G = G_1 \dot \cup G_2$, we simply calculate $N_T(G1) * N_T (G_2)$:
-    The adjacency matrix of $G_1$:
-    $$A(G_1) = \begin{pmatrix}
+To get all spanning forests of $G = G_1 \dot \cup G_2$, we simply calculate $N_T(G1) * N_T (G_2)$:
+The adjacency matrix of $G_1$:
+
+\begin{gather*}
+    A(G_1) = \begin{pmatrix}
     0 & 1 & 1\\
     1 & 0 & 1\\
     1 & 1 & 0
-    \end{pmatrix}$$
-
-    The corresponding degree matrix:
-
-    $$D(G_1) = \begin{pmatrix}
-    2 & 0 & 0\\
-    0 & 2 & 0\\
-    0 & 0 & 2
-    \end{pmatrix}$$
-
-    The laplacian:
-
-    $$L(G_1) = \begin{pmatrix}
-    2 & -1 & -1\\
-    -1 & 2 & -1\\
-    -1 & -1 & 2
-    \end{pmatrix}$$
-
-    after deleting the first row and column:
-
-    $$\hat L(G_1) = \begin{pmatrix}
-    2 & -1\\
-    -1 & 2
-    \end{pmatrix}$$
-
-    calculating the determinant:
-
-    $$
-    det(\hat L_1(G_1)) = 4 - 1 = 3
-    $$
-
-    The adjacency matrix of $G_2$:
-    $$A(G_2) = \begin{pmatrix}
-    0 & 0 & 0 & 1 & 1\\
-    0 & 0 & 0 & 0 & 1\\
-    0 & 0 & 0 & 1 & 1\\
-    1 & 0 & 1 & 0 & 1\\
-    1 & 1 & 1 & 1 & 0
-    \end{pmatrix}$$
-
-    The laplacian matrix:
-
-    $$L(G_2) = \begin{pmatrix}
-    2 & 0 & 0 & -1 & -1 \\
-    0 & 1 & 0 & 0 & -1  \\
-    0 & 0 & 2 & -1 & -1 \\
-    -1 & 0 & -1 & 3 & -1 \\
-    -1 & -1 & -1 & -1 & 4
-    \end{pmatrix}$$
-
-    after deleting the fourth row and column:
-
-    $$\hat L_4(G_2) = \begin{pmatrix}
-    2 & 0 & 0 & -1 \\
-    0 & 1 & 0 & 0  \\
-    0 & 0 & 2 & -1 \\
-    -1 & 0 & -1 & 3
-    \end{pmatrix}$$
-
-    calculating the determinant:
-
-    $$
-    det(\hat L_4(G_2)) = -1 \times \begin{pmatrix}
-    2 & 0 & -1 \\
-    0 & 2 & -1 \\
-    -1 & -1 & 3
     \end{pmatrix}
-    = -1 \times (12 + 0 + 0 - 2 - 0 - 2) = -8
-    $$
-    we take $8$ as the sign only depends on which row and column you eliminate.
-    Thus the number of $G = 3 \times 8$.
+\end{gather*}
+
+The corresponding degree matrix:
+
+\begin{gather*}
+D(G_1) = \begin{pmatrix}
+2 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 2
+\end{pmatrix}
+\end{gather*}
+
+The laplacian:
+
+\begin{gather*}
+L(G_1) = \begin{pmatrix}
+2 & -1 & -1\\
+-1 & 2 & -1\\
+-1 & -1 & 2
+\end{pmatrix}
+\end{gather*}
+
+after deleting the first row and column:
+
+\begin{gather*}
+\hat L(G_1) = \begin{pmatrix}
+2 & -1\\
+-1 & 2
+\end{pmatrix}
+\end{gather*}
+
+calculating the determinant:
+
+\begin{gather*}
+det(\hat L_1(G_1)) = 4 - 1 = 3
+\end{gather*}
+
+The adjacency matrix of $G_2$:
+
+\begin{gather*}
+A(G_2) = \begin{pmatrix}
+0 & 0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 1 & 1\\
+1 & 0 & 1 & 0 & 1\\
+1 & 1 & 1 & 1 & 0
+\end{pmatrix}
+\end{gather*}
+
+The laplacian matrix:
+
+\begin{gather*}
+L(G_2) = \begin{pmatrix}
+2 & 0 & 0 & -1 & -1 \\
+0 & 1 & 0 & 0 & -1  \\
+0 & 0 & 2 & -1 & -1 \\
+-1 & 0 & -1 & 3 & -1 \\
+-1 & -1 & -1 & -1 & 4
+\end{pmatrix}
+\end{gather*}
+
+after deleting the fourth row and column:
+
+\begin{gather*}
+\hat L_4(G_2) = \begin{pmatrix}
+2 & 0 & 0 & -1 \\
+0 & 1 & 0 & 0  \\
+0 & 0 & 2 & -1 \\
+-1 & 0 & -1 & 3
+\end{pmatrix}
+\end{gather*}
+
+calculating the determinant:
+
+\begin{gather*}
+det(\hat L_4(G_2)) = -1 \times \begin{pmatrix}
+2 & 0 & -1 \\
+0 & 2 & -1 \\
+-1 & -1 & 3
+\end{pmatrix}
+= -1 \times (12 + 0 + 0 - 2 - 0 - 2) = -8
+\end{gather*}
+
+we take $8$ as the sign only depends on which row and column you eliminate.
+Thus the number of $G = 3 \times 8$.
