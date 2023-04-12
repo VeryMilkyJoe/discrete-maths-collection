@@ -1,11 +1,16 @@
-# Exercise Sheet 1
+---
+title: Exercise Sheet 1
+---
 
-#### 1) Use a suitable graph theoretical model to solve the following problems:
+### 1) Use a suitable graph theoretical model to solve the following problems:
+
 **a) Show that in every city at least two of its inhabitants have the same number of neighbours!**
 
 Let $G = (V,E)$ such that
+
 * $v \in V$ if $v$ is an inhabitant of the city and
 * $(v,w) \in E$ iff $v$ and $w$ are neighbours.
+
 Now, we show the (a) by proving that in any simple, undirected graph there exist two vertices which have the same degree:
 
 -- Proof by contradiction--
@@ -39,7 +44,7 @@ E = \{e_1, \dots , e_k\},\\
 V = \{v_{i1}, v_{i2} | e_i \in E\}
 \end{gather*}
 
-#### 2) Compute the number of walks of length $l$ from $i$ to $j$ in the following graph:
+### 2) Compute the number of walks of length $l$ from $i$ to $j$ in the following graph:
 ```mermaid
 flowchart LR
     1((1)):::myClass --- 2((2)):::myClass --- 3((3)):::myClass
@@ -59,7 +64,7 @@ The number of triangles is defined by the trace (the sum of elements on the main
 
 **Perform the computation for two graphs of your choice on four vertices.**
 
-#### 3) Show that each of the following four statements is equivalent to the statement "T is a tree":
+### 3) Show that each of the following four statements is equivalent to the statement "T is a tree":
 
 * (1) Every two nodes of $T$ are connected by exactly one path.
 * (2) T is connected and $\alpha_0(T) = \alpha_1(T) + 1$.
@@ -112,7 +117,7 @@ Let (0) := "T is a tree", i.e. *A graph is a tree iff it is connected, acyclic, 
 
 Since we showed, (2) -> (0) -> (1) -> (3) -> (4) -> (2), we have shown equivalence of all statements by transitivity of implication.
 
-#### 4) Prove that the edge set of an undirected, simple graph can be partitioned into cycles iff every vertex set has even degree.
+### 4) Prove that the edge set of an undirected, simple graph can be partitioned into cycles iff every vertex set has even degree.
 
 *Hint:* To prove the existence of a cycle, consider a maximal path and use the even degree condition.
 
@@ -147,7 +152,7 @@ Since we showed, (2) -> (0) -> (1) -> (3) -> (4) -> (2), we have shown equivalen
                 Now, $V' < n$ holds for $G'$ and thus $G'$ is partitionable into a set of cycles $C$ by IH. We can thus partition $G$ by $C_1 \dot \cup C$.
 
 
-#### 5) Let $G = (V,E)$ be an undirected graph with $n$ vertices which does not have any cycle of length 3. Prove:
+### 5) Let $G = (V,E)$ be an undirected graph with $n$ vertices which does not have any cycle of length 3. Prove:
 
 **1. If $xy \in E$ then $d(x) + d(y) \leq n$.**
 
@@ -200,7 +205,7 @@ now only simple arithmetic transformations:
 
 $\frac{4*|E|^2}{n} \leq n * |E| \Leftrightarrow \frac{4m}{n} \leq n \Leftrightarrow 4m \leq n^2 \Leftrightarrow m \leq \frac{n^2}{4}$
 
-#### 6) Let $G = (V,E)$ and $G' = (V',E')$ be two undirected graphs. A graph isomorphism is a bijective mapping $\phi : V \rightarrow V'$ such that two vertices $x,y \in V$ are adjacent iff $\phi(x)$ and $\phi(y)$ are adjacent. The two graphs $G$ and $G'$ are called isomorphic, if there exists an isomorphism $\phi: V \rightarrow V'$. Prove the following statements:
+### 6) Let $G = (V,E)$ and $G' = (V',E')$ be two undirected graphs. A graph isomorphism is a bijective mapping $\phi : V \rightarrow V'$ such that two vertices $x,y \in V$ are adjacent iff $\phi(x)$ and $\phi(y)$ are adjacent. The two graphs $G$ and $G'$ are called isomorphic, if there exists an isomorphism $\phi: V \rightarrow V'$. Prove the following statements:
 
 1. If $G$ and $G'$ are isomorphic graphs and $\phi : V \rightarrow V'$ is an isomorphism, then $d_G(x) = d_G'(\phi(x))$ forall $x \in V$.
 
@@ -246,7 +251,7 @@ Since we arrive at a contradiction in both cases, $d_G(x) = d_G(\phi(x))$ has to
 
     But $G$ and $G'$ are not isomorphic, since $v_5$ and $v_4$ are adjacent but $v_4'$ and $v_5'$ are not.
 
-#### 7) Are the following two graphs isomorphic?
+### 7) Are the following two graphs isomorphic?
 
 ```graphviz
 graph G1 {
@@ -285,13 +290,13 @@ graph G2 {
 Yes, we provide the following isomorphism:
     $f(1) = A$, $f(3) = B$, $f(b) = C$, $f(d) = D$, $f(c) = \alpha$, $f(a) = \beta$, $f(2) = \gamma$, $f(4) = \delta$, which is edge preserving and bijective.
 
-#### 8) Let $G = (V,E)$ be a simple graph. Moreover let $G_R$ be its reduction. Prove that $G_R$ is acyclic.
+### 8) Let $G = (V,E)$ be a simple graph. Moreover let $G_R$ be its reduction. Prove that $G_R$ is acyclic.
 
 --Proof by contradiction--
 
 Let $G_R$ be a graph reduction which contains a cycle $C$, then $C$ is a walk $V_1^R \rightarrow V_2^R \leadsto V_1^R$. Thus, there exist strongly connected components $V_1, V_2$ in $G$ such that there is a walk from some $v_1 \in V_1$ to some $v_2 \in V_2$ and from $v_2$ to $v_1$. By construction of $G_R$ this means that $v_1$ and $v_2$ have to be in the same component in $G_R$. Contradiction!
 
-#### 9) Find the strongly connected components and the reduction $G_R$ of the graph $G$ below. Furthermore, determine all vertex bases of $G$.
+### 9) Find the strongly connected components and the reduction $G_R$ of the graph $G$ below. Furthermore, determine all vertex bases of $G$.
 
 ```graphviz
 digraph G {
@@ -353,7 +358,7 @@ digraph G {
 
 * Vertex base: $K_B$ = \{9,14\}.
 
-#### 10) Use the matrix tree theorem to compute the number of spanning forests of the graph below!
+### 10) Use the matrix tree theorem to compute the number of spanning forests of the graph below!
 
 ```graphviz
 graph G
