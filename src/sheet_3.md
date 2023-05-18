@@ -44,85 +44,101 @@ title: Exercise Sheet 3
     We show, no vertex in $V_1$ is connected to some other vertex in $V_1$. (Analogous proof for $V_2$)
 
     --Proof by Contradiction--
-    
-    Assume there exist $v_i,v_j \in V_1/V_2$ such that $(v_i,v_j) \in E$, then there exists a cycle $c: v_1 \leadsto v_i \rightarrow v_j \leadsto v_1$ by construction of $V_1/V_2$.
-        We distinguish:
 
-        * $v_i,v_j \in V_1$: then the length of $c$ is defined by $v_1 \leadsto v_i + 1 + v_j \leadsto v_1$, by construction of $V_1$, $v_1 \leadsto v_i$ and $v_j \leadsto v_1$ are each even, meaning the length of $c$ is odd. Contradiction!
-        * $v_i, v_j \in V_2$: then the length of $c: v_1 \leadsto v_i + 1 + v_j \leadsto v_1$, where $v_1 \leadsto v_i, v_j \leadsto v_1$ are each odd, thus their sum is even, if we now add 1 for the edge between $v_i$ and $v_j$, the length of $c$ is odd. Contradiction!
+    Assume there exist $v_i,v_j \in V_1/V_2$ such that $(v_i,v_j) \in E$, then there exists a cycle $c: v_1 \leadsto v_i \rightarrow v_j \leadsto v_1$ by construction of $V_1/V_2$.
+
+    We distinguish:
+
+    * $v_i,v_j \in V_1$: then the length of $c$ is defined by $v_1 \leadsto v_i + 1 + v_j \leadsto v_1$, by construction of $V_1$, $v_1 \leadsto v_i$ and $v_j \leadsto v_1$ are each even, meaning the length of $c$ is odd. Contradiction!
+    * $v_i, v_j \in V_2$: then the length of $c: v_1 \leadsto v_i + 1 + v_j \leadsto v_1$, where $v_1 \leadsto v_i, v_j \leadsto v_1$ are each odd, thus their sum is even, if we now add 1 for the edge between $v_i$ and $v_j$, the length of $c$ is odd. Contradiction!
 
 In both cases $c$ is of odd length, contradicting the assumption!
 
 #### 25) Let $G$ be a Eularian graph and $H$ be a subdivision of $G$.
-* **Is $H$ Eularian?**
---Yes--
-Theorem: An undirected, connected graph is Eularian iff all its vertices have even degree.
 
-Since $G$ is Eularian, all $v \in V$ have even degree.
-Now, all vertices in $H$ are either
- * vertices from $G$:
-     then either their edges are equivalent to the ones in $G$, meaning their degree remains unchanged from the one in the original graph or some edges connecting to the vertice were subdivided then their degree also remains unchanged as for each removed edge, a new one is added.
- * Or they are some new vertice $w$ which was added by a subdividing operation. Then their degree is exactly two and thus even.
+* **Is $H$ Eularian?**
+
+    --Yes--
+
+    Theorem: An undirected, connected graph is Eularian iff all its vertices have even degree.
+
+    Since $G$ is Eularian, all $v \in V$ have even degree.
+    Now, all vertices in $H$ are either
+    * vertices from $G$:
+        then either their edges are equivalent to the ones in $G$, meaning their degree remains unchanged from the one in the original graph or some edges connecting to the vertice were subdivided then their degree also remains unchanged as for each removed edge, a new one is added.
+    * Or they are some new vertice $w$ which was added by a subdividing operation. Then their degree is exactly two and thus even.
 
 * **Suppose that $G$ is Hamiltonian. Does this imply that $H$ is Hamiltonian as well?**
---Counter example--
-$G$ is Hamiltonian.
-```graphviz
-graph {
-{rank=same;1,2}
-{rank=same;3,4}
 
-1--2--3
-4--1
-4--3
-4--2
+    --Counter example--
 
-}
-```
+    $G$ is Hamiltonian.
 
-$H$ is not Hamiltonian.
-```graphviz
-graph {
-{rank=same;1,2}
-{rank=same;3,4}
+    ```graphviz
+    graph {
+    {rank=same;1,2}
+    {rank=same;3,4}
 
-1--2--3
-4--1
-4--3
-2--5
-5--4
+    1--2--3
+    4--1
+    4--3
+    4--2
 
-}
-```
+    }
+    ```
+
+    $H$ is not Hamiltonian.
+
+    ```graphviz
+    graph {
+    {rank=same;1,2}
+    {rank=same;3,4}
+
+    1--2--3
+    4--1
+    4--3
+    2--5
+    5--4
+
+    }
+    ```
 
 #### 26)
+
 (a)
 1) **Prove that every simple connected planar graph with at least 3 vertices satisfies $\alpha_1(G) \leq 3\alpha_0(G) - 6$.**
 
 We know that each edge contributes to exactly two (not necessarily) different faces. A face touches at least 3 edges but maybe more.
 
 Therefore, we can define the following inequality:
-$$
+
+\begin{gather*}
 3 \alpha_2(G) \leq 2 \alpha_1(G)
-$$
+\end{gather*}
+
 Now, by Euler's Formula: $\alpha_0(G) - \alpha_1(G) + \alpha_2(G) = 2$ i.e. $\alpha_2(G) = 2- \alpha_0(G) + \alpha_1(G)$
 
 We can then substitute this into the defined inequality:
-$$
+
+\begin{gather*}
 3(2 - \alpha_0(G) + \alpha_1(G)) \leq 2\alpha_1(G) \Leftrightarrow
-$$
-$$
+\end{gather*}
+
+\begin{gather*}
 6 - 3\alpha_0(G) + 3\alpha_1(G) \leq 2\alpha_1(G) \Leftrightarrow
-$$
-$$
+\end{gather*}
+
+\begin{gather*}
 6 + 3 \alpha_1(G) \leq 2 \alpha_1(G) + 3\alpha_0(G) \Leftrightarrow
-$$
-$$
+\end{gather*}
+
+\begin{gather*}
 6 + \alpha_1(G) \leq 3 \alpha_0(G) \Leftrightarrow
-$$
-$$
+\end{gather*}
+
+\begin{gather*}
 \alpha_1(G) \leq 3\alpha_0(G) - 6
-$$
+\end{gather*}
 
 2) **Show that this implies that $K_5$ is not planar:**
 
@@ -131,6 +147,7 @@ $\alpha_1(K_5) = 4 * 5 = 20$ and $\alpha_0(K_5) = 5$, then we put these numbers 
 (b) **Prove the following statement or find a counter example: For all $n - m + f = 2$ and for which there exists a simple graph with $\alpha_0 = n, \alpha_1 = m$ there exists also a simple planar graph with $\alpha_0 = n, \alpha_1 = m$ and $\alpha_2 = f$.**
 
 --Counter example--
+
 $K_5$ with $n=5$, $m=20$, there exists a simple graph with $\alpha_0 = 5$ and $\alpha_1 = 20$ but there does not exist a planar simple graph for $n=5$ and $m=20$ as shown above.
 
 #### 27) Let $n \in \mathbb{N}$ and $G = (V_1\cup V_2,E)$ be a bipartite graph with $min_{x \in V} d(x) \geq n/2$ and $|V_1| = |V_2| = n$. Use Hall's theorem to prove that $G$ has a perfect matching.
@@ -138,9 +155,9 @@ $K_5$ with $n=5$, $m=20$, there exists a simple graph with $\alpha_0 = 5$ and $\
 W.l.o.g. we argue over an arbitrary subset $S \subseteq V_1$.
 We denote the set of all neighbours of all vertices in $S$ by:
 
-$$
+\begin{gather*}
 N(S) = \{v_2 \ | \ (v_1,v_2) \in E \text{ and } v_1 \in S\}
-$$
+\end{gather*}
 
 We distinguish two cases:
 
@@ -163,17 +180,20 @@ Since we showed $|S| \leq |N(S)|$ for all possible subsets $S \subseteq V_1$. We
 We know that any $k$-chromatic graph has at least $k$ vertices of degree $k-1$ each, otherwise it would not be $k$-chromatic.
 
 Then, by Handshaking lemma:
-$$
+
+\begin{gather*}
 k (k-1) \leq \sum_{v \in V} deg(v) = 2 |E| \Leftrightarrow
-$$
-$$
+\end{gather*}
+
+\begin{gather*}
 \frac{k (k-1)}{2} \leq |E|
-$$
+\end{gather*}
 
 Which is equivalent to $|E| \geq \binom{k}{2}$ as:
-$$
+
+\begin{gather*}
 \binom{k}{2}  = \frac{k!}{2(k-2)!} = \frac{k(k-1)(k-2)!}{2(k-2)!} = \frac{k(k-1)}{2}
-$$
+\end{gather*}
 
 #### 29) Let $G_1 = (V, E_1)$ and $G_2 = (V, E_2)$ be two graphs. Set $G = (V, E_1 \cup E_2)$ and prove that $\chi(G) \leq \chi(G_1)\chi(G_2)$.
 
@@ -181,9 +201,11 @@ Since $G_1$ is $\chi(G_1)$-colourable, there exists some colouring $c_1$ such th
 Analogously, there exists some colouring $c_2$ such that $c_2$ $\chi(G_2)$-colours $G_2$.
 
 We can then construct a colouring $c$ which colours an arbitrary vertex $v  \in G$ by:
-$$
+
+\begin{gather*}
 c(v) = (c_1(v), c_2(v)),
-$$
+\end{gather*}
+
 then $\chi(G) \leq \chi(G_1) \times \chi(G_2)$ as the number of colours which $c$ uses are all combinations of the colours $c_1, c_2$ use, thus $\chi(G_1) \times \chi(G_2)$, but there could be a smaller colouring, e.g. if $G_1 = G_2$. We now show that $c$ colours $G$ correctly, i.e. no connected vertices in $G$ are coloured the same colour.
 
 W.l.o.g. for an arbitrary edge $e \in E_1$, where $e = (v_1,v_2)$ we know by $G_1$ being $\chi(G_1)$-colourable by function $c_1$, that $c_1(v_1) \neq c_2(v_2)$, thus $(c_1(v_1), c_2(v_1)) \neq (c_1(v_2),c_2(v_2))$.
@@ -191,9 +213,11 @@ W.l.o.g. for an arbitrary edge $e \in E_1$, where $e = (v_1,v_2)$ we know by $G_
 Therefore, $c$ is a correct colouring of $G$.
 
 #### 30) Show the following inequality for Ramsey numbers: If $r \geq 3$ then:
-$$
+
+\begin{gather*}
 R(n_1, \dots, n_{r-2}, n_{r-1}, n_r) \leq R(n_1, \dots, n_{r-2}, R(n_{r-1},n_r))
-$$
+\end{gather*}
+
 *Hint*: Let $n= R(n_1, \dots, n_{r-2}, R(n_{r-1}, n_r))$ and consider an edge colouring of $K_n$ with $r$ colours, say $c_1, \dots, c_r$. Identify the colours $c_{r-1}$ and $c_r$ and apply the Ramsey property for $r-1$ colours.
 
 Let $n= R(n_1, \dots, n_{r-2}, R(n_{r-1}, n_r))$, $n_i' = n_i$ for $i \in \{1, \dots, r-2\}$ and $n_{r-1}' = R(n_{r-1},n_r))$, we consider an edge colouring $C$ of $K_n$ with $r$ colours, $c_1, \dots, c_r$.
@@ -201,6 +225,7 @@ For each edge, coloured in $c_{r-1}$ or $c_r$, we colour it in $c_{r-1}$ to get 
 Let $C'$ be a colouring derived from $C$, where all edges coloured $c_r$ are coloured $c_{r-1}$.
 
 By definition of $n = R(n_1, \dots, n_{r-2}, R(n_{r-1},n_r))$, $C'$ contains some $K_{n_{i}'}$ coloured in $c_i$ and either:
+
 * $i \in \{1, \dots, r-2\}$, then $K_{n_{i}}$ is coloured $c_i$ in $C$ by construction.
 * $i = r-1$, then let $x = R(n_{r-1}, n_r)$, the edges in $K_x$ are coloured either $c_{r-1}$ or $c_r$ in $C$ by construction of $C'$.
     By definition of $x$, $K_x$ coloured in $C$ contains either $K_{n_{r-1}}$ with all edges coloured in $c_{r-1}$ or $K_{n_r}$ with all edges coloured in $c_r$.
