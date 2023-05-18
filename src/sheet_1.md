@@ -29,6 +29,7 @@ Tell us how this can be done or prove that this is impossible.
 Let $G=(V,E)$ a graph such that the nodes $V = \{v_1, \dots, v_{11}\}$ represent the 11 friends and there is an edge $v,w \in E$ if $v$ sends a card to $w$ and vice versa.
 
 --Proof that this is impossible--
+
 By the Handshaking Lemma, $\sum_{v \in V} deg(v) = 2*|E|$ holds for any finite, undirected graph.
 By (i), for each vertice $v \in V$, $deg(v) = 3$ and by assumption $|V| = 11$.
 If we apply this to the handshaking lemma: $\sum_{v \in V} deg(v) = 33 = 2* k$, where $k = |E|$. But this holds for no integer amount of edges. *Contradiction!*
@@ -52,11 +53,13 @@ flowchart LR
 ```
 
 The number of walks of length $l$ from $i$ to $j$ is defined by the sum of all values in $A(G)^l$, where
+
 $$A(G) = \begin{pmatrix}
 0 & 1 & 0\\
 1 & 0 & 1\\
 0 & 1 & 0
 \end{pmatrix}$$
+
 The element $(i,j)$ in $A(G)^l$ represents the walks of length $l$ from vertex $i$ to vertex $j$.
 
 **How could you use the adjacency matrix to compute the number of triangles (cycles of length 3) in a (loopless) graph?**
