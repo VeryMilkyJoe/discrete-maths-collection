@@ -88,29 +88,33 @@ We observe that, $L_1(K_n)''$ is an upper triangular matrix and the determinant 
     A tree $T=(V,E)$ with size $|V| < n$ and no vertices $v \in V$ with degree two has more leaves than internal nodes.
 * Induction step:
         We observe that $T= (V,E)$ and $|V| = n$ has some node $v \in V$ such that $v$ is connected to at most 1 non-leaf node but also at least 1 by n > 1. Since $\forall v \in V: d(v) \neq 2$, v is connected to at least 2 leaves and some subtree of $T$. We can then apply the induction hypothesis to $T'$, where $T'$ is a new tree, constructed by removing all leaves adjacent to $v$ and the edges connecting the leaves to $v$. $T'$ still has no vertex of degree 2 as $v$ is now a leaf, i.e. $d(v) = 1$ and all other vertices in $T'$ have degree $\neq 2$ by assumption. Then, by induction hypothesis $L(T') > I (T')$ since we removed at least two leaves from $T$ and one internal node in $T$ became a leaf in $T'$, $L(T') + 1 > I(T') + 1 \Rightarrow L(T) > I(T)$.
-**2) Consider the average degree and use the Handshaking Lemma.
-    Let $T= (V,E)$ be a tree. Therefore, $|E| = |V| - 1$ as shown in exercise 1).
-    We can insert this into the Handshaking Lemma:**
 
-$$
+**2) Consider the average degree and use the Handshaking Lemma.**
+
+Let $T= (V,E)$ be a tree. Therefore, $|E| = |V| - 1$ as shown in exercise 1).
+We can insert this into the Handshaking Lemma:
+
+\begin{gather*}
 \sum_{v \in V} d(v) = 2 (|V| -1)
-$$
+\end{gather*}
 
 We consider the average degree of a node, which is
 
-$$
+\begin{gather*}
 \frac{\sum_{v \in V} d(v)}{|V|} = \frac{2(|V|-1)}{|V|}
-$$
+\end{gather*}
 
 Now, since each internal node, contributes at least 3 to the sum of degrees and each leaf contibutes exactly one to that sum, let $i$ be the number of internal nodes and $l$ the number of leaf nodes in $T$.
 
-$$
+\begin{gather*}
 \frac{2(|V|-1)}{|V|} \geq \frac{3i+l}{|V|} = 2(|V|-1) \geq 3i+l
-$$
+\end{gather*}
 
 and since $|V| = i+l$, $2(|V| -1) \geq 2i+|V|$, from which we subtract $|V|$, to get
 
-$$|V| - 2\geq 2i \Leftrightarrow \frac{|V|}{2} - 1 \geq i \Leftrightarrow \frac{|V|}{2} > i.$$
+\begin{gather*}
+|V| - 2\geq 2i \Leftrightarrow \frac{|V|}{2} - 1 \geq i \Leftrightarrow \frac{|V|}{2} > i.
+\end{gather*}
 
 Since $i$ represents less than half of the nodes in $V$, and all other nodes have to be leaf nodes, more nodes in $V$ are leaf nodes than internal nodes.
 
@@ -140,18 +144,24 @@ graph {
 5--{4,6}
 }
 ```
+
 The number of vertices is even, but there is no spanning subgraph such that all vertices have odd degree, seeing as we cannot remove edges or we lose the spanning property.
 
 #### 14) List all matroids $(E,S)$ with:
 
 * $E = \{1\}$:
-    $$\{\emptyset\}, \{\emptyset, \{1\}\}$$
+    \begin{gather*}
+    \{\emptyset\}, \{\emptyset, \{1\}\}
+    \end{gather*}
 * $E=\{1,2\}$:
-    $$\emptyset,\\
+    \begin{gather*}
+    \emptyset,\\
     \{\emptyset, \{1\}\}, \{\emptyset, \{2\}\}, \{\emptyset, \{1\}, \{2\}\},\\
-    \{\emptyset, \{1\}, \{2\}, \{1,2\} $$
+    \{\emptyset, \{1\}, \{2\}, \{1,2\}
+    \end{gather*}
 * $E = \{1,2,3\}$:
-    $$\emptyset,\\
+    \begin{gather*}
+    \emptyset,\\
     \{\emptyset, \{1\}\}, \{\emptyset, \{2\}\}, \{\emptyset, \{3\}\},\\
     \{\emptyset, \{1\}, \{2\}\} , \{\emptyset, \{2\}, \{3\}\}, \{\emptyset, \{1\}, \{3\}\},
     \{\emptyset, \{1\}, \{2\}, \{3\} \}, \\
@@ -161,11 +171,13 @@ The number of vertices is even, but there is no spanning subgraph such that all 
     \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{2,3\}\},\\
     \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}\},\\
     \{\emptyset, \{1\}, \{2\}, \{3\}, \{2,3\}, \{1,3\}\},\\
-    \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{2,3\}, \{1,3\}, \{1,2,3\}\}$$
+    \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{2,3\}, \{1,3\}, \{1,2,3\}\}
+    \end{gather*}
 
 #### 15) Let $E = \{a,b,c,d,e,f,g\}$ and $$S = \{A \subseteq E \ | \ |A| \leq 3 \} \backslash \{\{a,b,c\}, \{c,d,e\}, \{a,e,f\}, \{a,d,g\}, \{c,f,g\}, \{b,e,g\}, \{b,d,f\}\}.$$ Examine whether $(E,S)$ is a matroid.
 
 $(E,S)$ is a matroid:
+
 * The empty set is in $S$.
 * $S$ is closed under inclusion, since all two, and one-element subsets of $E$ are in $S$.
 * Assume some $\{i,h\} \in S$ and $\{x,y,z\} \in S$, then if $\{i,h\} \subset \{x,y,z\}$ we take the elem $j$ from $\{x,y,z\}$ which is not in $\{i,h\}$ and get $\{x,y,z\} = \{i,h\} \cup j$ thus trivially in $S$.
@@ -173,7 +185,8 @@ $(E,S)$ is a matroid:
     Since the excluded sets only have a max one element overlap, for any two element subset of $E$, we can choose the element in $E$ which does not create an excluded set.
 
 #### 16) Prove that an independence system $(E,S)$ is a matroid iff for every $A \subseteq E$, all maximal independent subsets of $A$ have the same cardinality.
-=>) Assume $A,B \in S$ such that $A$ and $B$ are both maximal and w.l.o.g. $|A| > |B|$ and by the matroid property $B \cup \{x\} \in S$. Therefore $B$ is not a maximal independent subset of $E$. Contradiction!
+
+* =>) Assume $A,B \in S$ such that $A$ and $B$ are both maximal and w.l.o.g. $|A| > |B|$ and by the matroid property $B \cup \{x\} \in S$. Therefore $B$ is not a maximal independent subset of $E$. Contradiction!
 
 * <=) This does not hold:
 
