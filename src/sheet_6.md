@@ -1,7 +1,7 @@
 # Exercise Sheet 6
 
-#### 51) A $t$-ary tree is a plane rooted tree such that every node has either $t$ or $0$ successors. A node with $t$ successors is called internal node. 
-* How many leaves does a $t$-ary tree with $n$ internal nodes have? 
+#### 51) A $t$-ary tree is a plane rooted tree such that every node has either $t$ or $0$ successors. A node with $t$ successors is called internal node.
+* How many leaves does a $t$-ary tree with $n$ internal nodes have?
     We can count the number of nodes in our tree by counting all nodes with a parent and the nodes without a parent, the latter simply being the root. Each internal node has to have $t$ children, thus we have:
     $$
     t \times n +1
@@ -23,22 +23,22 @@ where $(n_1, \dots, n_t)$ are all possible combinations such that $n_1 + \dots n
 We define $a_0=1$ since there exists exactly one $t-ary$ tree with no internal nodes, namely the one consisting of only the root.
 Then, since $A(z) = \sum_{n \geq 0} a_n z^n$, by definition of generating functions.
 
-Furthermore, we know 
+Furthermore, we know
 $$
 (A(z))^t = (\sum_{n \geq 0} a_{n+1}z^n)^t = \sum_{n \geq 0} c_n z^n,
 $$
-where 
+where
 $$
 c_n = \sum_{n_1 + \dots + n_t = n} a_{n_1} \times \dots \times a_{n_t}
 $$
-which can be observed from the definition of the cauchy product. 
+which can be observed from the definition of the cauchy product.
 
-We observe that $c_n=a_{n+1}$, hence 
+We observe that $c_n=a_{n+1}$, hence
 
 $$
 (A(z))^t = \sum_{n \geq 0} a_{n+1}z^n
 $$
-and 
+and
 $$
 \sum_{n \geq 1} a_n z^{n-1} = \sum_{n \geq 1} a_n z^{n-1} + a_0 - a_0 = \frac{1}{z} \sum_{n \geq 0} a_n z^n - a_0
 $$
@@ -52,7 +52,7 @@ $$
 
 
 ```graphviz
-graph graphname { 
+graph graphname {
 rank=same
 y[label="T =", shape=plaintext]
 subgraph cluster_0 {
@@ -61,7 +61,7 @@ a[label="",shape=circle]
 b[label="",shape=circle]
 c[label="",shape=circle]
 d[label="",shape=circle]
-		a -- b; 
+		a -- b;
 		a -- c;
 		c -- d;
 	}
@@ -73,19 +73,19 @@ f[label="", shape=circle]
 g[label="T", shape=circle]
 h[label="T", shape=circle]
         e -- g;
-        e -- f; 
+        e -- f;
         f -- h;
 	}
-} 
+}
 ```
 
 Then $t_4 = 1$ and $t_n = \sum_{i+j=n-2} t_i \times t_j$, for $n \geq 4$.
 
-We observe that 
+We observe that
 $$
 t_{n+2} = \sum_{i+j=n} t_i \times t_j = c_n, \quad n > 2
 $$
-where, since, 
+where, since,
 
 $$
 (A(z))^2 = \sum_{n > 2} t_{n+2} z^n= A(z) \times A(z) = \sum_{n \geq 0} t_n z^n \times \sum_{n \geq 0} t_n z^n = \sum_{n \geq 0} (\sum_{l=0}^{n} t_l \times t_{n-l})z^n =
@@ -101,7 +101,7 @@ $$
 $$
 since for $n = 0,1,2,3$, $t_n = 0$
 $$
-= z^{1/2} \sum_{n \geq 0} t_{n} z^{n}) - z^2 
+= z^{1/2} \sum_{n \geq 0} t_{n} z^{n}) - z^2
 $$
 
 Then, we have $(A(z))^2 = z^2 A(z) - z^2$, we solve the quadratic equation:
@@ -129,7 +129,7 @@ we can then define $t_n$
     \begin{cases}
       - \binom{\frac{1}{2}}{k} (-4^k) \frac{1}{2} & \text{if } n = 6k-2 \text{ for } k \in \mathbb{N}\\
       0 & \text{otherwise}
-    \end{cases}       
+    \end{cases}
 \end{equation}
 
 #### 53) Compute the number $t_n$ of plane rooted trees with $n$ nodes.
@@ -153,7 +153,7 @@ when comparing this to binary trees, only factor $1/z$ is missing for binary tre
 
 The number of plane-rooted trees with $n$ nodes can thus be defined by coefficient extraction of the Catalan numbers:
 $$
-[z^n]P(z) = [z^{n-1}] C(z) = \frac{1}{n} \binom{2(n-1)}{n-1} \quad \text{, for } n\geq 1 
+[z^n]P(z) = [z^{n-1}] C(z) = \frac{1}{n} \binom{2(n-1)}{n-1} \quad \text{, for } n\geq 1
 $$
 since
 $$
@@ -163,7 +163,7 @@ $$
 #### 54) Consider the following context-free grammar: $S \rightarrow aSb|\epsilon$. This defines a formal language $\mathcal{L}$ which consists of all words $w$ over the alphabet $\Sigma = \{a,b\}$ such that either (a) $w$ starts with $a$ followed by a word from $\mathcal{L}$, then a $b$ follows, which is itself followed by another word of $\mathcal{L}$, or (b) $w$ is the empty word. Compute the number of words in $\mathcal{L}$ that consist of $n$ letters. Do this by finding a combinatorial structure that specifies $\mathcal{L}$ and analysing the generating function of that structure.
 
 ```graphviz
-graph graphname { 
+graph graphname {
 splines=false
 a[label="",shape=point]
 b[label="",shape=point]
@@ -173,31 +173,31 @@ e[label="",shape=point, style=invis]
 f[label="",shape=point, style=invis]
 g[label="",shape=point, style=invis]
 
-		a -- b[label="a"]; 
+		a -- b[label="a"];
 		a -- c[label="b"];
         c--d[shape=none];
         c--e[shape=none];
         b--g[shape=none];
         b--f[shape=none];
 
-} 
+}
 ```
 where the words of length $0$ have one possibility and there exist no words of odd length, since exerytime we write $a$, we write a $b$.
 
-We can easily show that the language represented by this grammar can be translated to $D_1$, where $D_1$ is the Dyck language over one set of parentheses, we simply translate $a \rightarrow ($ and $b \rightarrow )$. Since we know that $C_n$ is the number of Dyck words of length $2n$, where $C_n$ is the $n$th catalan number, we can define the number of words in $\mathcal{L}$ with $n$ letters by: 
+We can easily show that the language represented by this grammar can be translated to $D_1$, where $D_1$ is the Dyck language over one set of parentheses, we simply translate $a \rightarrow ($ and $b \rightarrow )$. Since we know that $C_n$ is the number of Dyck words of length $2n$, where $C_n$ is the $n$th catalan number, we can define the number of words in $\mathcal{L}$ with $n$ letters by:
 $$
 [z^{n}] D_z = \frac{1}{\frac{n}{2} +1} \binom{n}{\frac{n}{2}}
-$$, for even $n \geq0$ 
+$$, for even $n \geq0$
 and by $0$ otherwise.
 
-#### 55) Consider a regular $(n+2)$-gon $A$, say, with the vertices $0,1, \dots, n+1$. A triangulation is a decomposition of $A$ into $n$ triangles such that the $3$ vertices of each triangle are vertices of $A$ as well. Show that the set $\mathcal{T}$ of triangulations of regular polygons can be described as a combinatorial construction satisfying 
+#### 55) Consider a regular $(n+2)$-gon $A$, say, with the vertices $0,1, \dots, n+1$. A triangulation is a decomposition of $A$ into $n$ triangles such that the $3$ vertices of each triangle are vertices of $A$ as well. Show that the set $\mathcal{T}$ of triangulations of regular polygons can be described as a combinatorial construction satisfying
 $$
 \mathcal{T} = \{\epsilon\} \cup \mathcal{T} \times \Delta \times \mathcal{T}
 $$
-**where $\Delta$ denotes a single triangle and $\epsilon$ denotes the empty triangulation (consisting of no triangle and corresponding to the case $n=0$).** 
+**where $\Delta$ denotes a single triangle and $\epsilon$ denotes the empty triangulation (consisting of no triangle and corresponding to the case $n=0$).**
 
 Order matters here, since we have labelled vertices.
-We have $0$ triangulations for $n=0$, since we then only have 2 vertices. 
+We have $0$ triangulations for $n=0$, since we then only have 2 vertices.
 $$\{\epsilon\}$$
 Otherwise, we can split our $(n+2)$-gon into a triangle and the remaining shapes to be triangulated, hence:
 $$
@@ -224,7 +224,7 @@ Therefore, the number of triangulations of $A$ is computed by:
 $$
 [z^n]\sum_{n \geq 0} \frac{1}{n+1} \binom{2n}{n}
 $$
-which is 
+which is
 $$
  \frac{1}{n+1} \binom{2n}{n}
 $$
@@ -234,54 +234,54 @@ $$
 * even number of green balls: $\frac{1}{2}(e^z + e^{-z})$
 * arbitrary number of blue balls: $e^z$
 
-We therefore get: 
+We therefore get:
 $$
-(\frac{z^2}{2!} + \frac{z^4}{4!}) \times \frac{1}{2}(e^z + e^{-z}) \times e^z = 
-$$
-
-$$
-= (\frac{z^2}{2!} + \frac{z^4}{4!}) \times (\frac{e^{2z}}{2} + \frac{e^{0}}{2})= 
+(\frac{z^2}{2!} + \frac{z^4}{4!}) \times \frac{1}{2}(e^z + e^{-z}) \times e^z =
 $$
 
 $$
-= \frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \frac{e^{2z}}{2} \frac{z^2}{2} + \frac{e^{2z}} {2}\frac{z^4}{4!} = 
+= (\frac{z^2}{2!} + \frac{z^4}{4!}) \times (\frac{e^{2z}}{2} + \frac{e^{0}}{2})=
 $$
 
 $$
-\frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \frac{1}{4} z ^2 \sum_{n \geq 0} 2^n \frac{z^{n}}{n!} + 
-\frac{1}{48} z ^4 \sum_{n \geq 0} 2^n \frac{z^{n}}{n!} = 
+= \frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \frac{e^{2z}}{2} \frac{z^2}{2} + \frac{e^{2z}} {2}\frac{z^4}{4!} =
 $$
 
 $$
-\frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \sum_{n \geq 0} \frac{1}{4}  2^n \frac{z^{n}}{n!} + 
-\sum_{n \geq 0} \frac{1}{48}  2^{n} \frac{z^{n}}{n!} = 
+\frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \frac{1}{4} z ^2 \sum_{n \geq 0} 2^n \frac{z^{n}}{n!} +
+\frac{1}{48} z ^4 \sum_{n \geq 0} 2^n \frac{z^{n}}{n!} =
 $$
 
 $$
-\frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \sum_{n \geq 2} \frac{1}{4}  2^{n-2} \frac{z^{n}}{(n-2)!} + 
-\sum_{n \geq 4} \frac{1}{48} 2^{n-4} \frac{z^{n}}{(n-4)!} = 
+\frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \sum_{n \geq 0} \frac{1}{4}  2^n \frac{z^{n}}{n!} +
+\sum_{n \geq 0} \frac{1}{48}  2^{n} \frac{z^{n}}{n!} =
 $$
 
 $$
-\frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \sum_{n \geq 2} \frac{1}{16} n (n-1) 2^n \frac{z^n}{(n-2)!} + 
-\sum_{n \geq 4} \frac{1}{768} n (n-1)(n-2) (n-3) 2^n \frac{z^n}{n!} = 
+\frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \sum_{n \geq 2} \frac{1}{4}  2^{n-2} \frac{z^{n}}{(n-2)!} +
+\sum_{n \geq 4} \frac{1}{48} 2^{n-4} \frac{z^{n}}{(n-4)!} =
 $$
 
 $$
-\frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} \frac{1}{16} n (n-1) 2^n \frac{z^n}{n!} + 
-\sum_{n \geq 5} \frac{1}{768} n (n-1) (n-2) (n-3) 2^n \frac{z^n}{n!} = 
+\frac{1}{2} \frac{z^2}{2} + \frac{1}{2} \frac{z^4}{4!} + \sum_{n \geq 2} \frac{1}{16} n (n-1) 2^n \frac{z^n}{(n-2)!} +
+\sum_{n \geq 4} \frac{1}{768} n (n-1)(n-2) (n-3) 2^n \frac{z^n}{n!} =
 $$
 
 $$
-\frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} (\frac{1}{16} + \frac{(n-2)(n-3)}{768}) n (n-1) 2^n \frac{z^n}{n!} = 
+\frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} \frac{1}{16} n (n-1) 2^n \frac{z^n}{n!} +
+\sum_{n \geq 5} \frac{1}{768} n (n-1) (n-2) (n-3) 2^n \frac{z^n}{n!} =
 $$
 
 $$
-\frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} \frac{1}{768} (48 + n^2 - 5n + 6) n (n-1) 2^n \frac{z^n}{n!} = 
+\frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} (\frac{1}{16} + \frac{(n-2)(n-3)}{768}) n (n-1) 2^n \frac{z^n}{n!} =
 $$
 
 $$
-\frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} \frac{1}{768} (n^2 - 5n + 54) n (n-1) 2^n \frac{z^n}{n!} = 
+\frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} \frac{1}{768} (48 + n^2 - 5n + 6) n (n-1) 2^n \frac{z^n}{n!} =
+$$
+
+$$
+\frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} \frac{1}{768} (n^2 - 5n + 54) n (n-1) 2^n \frac{z^n}{n!} =
 $$
 We therefore get the following numbers for $a_n$:
 $$
@@ -289,7 +289,7 @@ a_n = \begin{cases}
 1  &\textit{, if } n = 2 \\
 3  &\textit{, if } n = 3 \\
 13  &\textit{, if } n = 4 \\
-\frac{1}{768} (n^2 - 5n + 54) n (n-1) 2^n  &\textit{, if } n \geq 5 
+\frac{1}{768} (n^2 - 5n + 54) n (n-1) 2^n  &\textit{, if } n \geq 5
 \end{cases}
 $$
 
@@ -300,7 +300,7 @@ $$
 *Hint: Use exponential generating functions.*
 
 $$
-\sum_{ n \geq 2} a_n \frac{z^n}{n!}  - 2 \sum_{ n \geq 2} n a_{n-1} \frac{z^n}{n!} + \sum_{ n \geq 2} n (n-1) a_{n-2} \frac{z^n}{n!} = 2 \sum_{ n \geq 2} n  n! \frac{z^n}{n!} 
+\sum_{ n \geq 2} a_n \frac{z^n}{n!}  - 2 \sum_{ n \geq 2} n a_{n-1} \frac{z^n}{n!} + \sum_{ n \geq 2} n (n-1) a_{n-2} \frac{z^n}{n!} = 2 \sum_{ n \geq 2} n  n! \frac{z^n}{n!}
 $$
 
 $$
@@ -361,7 +361,7 @@ a_n = \begin{cases}
 1  &\textit{, if } n = 0 \\
 1  &\textit{, if } n = 1 \\
 5  &\textit{, if } n = 2 \\
-1 -  (2\binom{-4}{n-3}) + (4 \binom{-4}{n-2})  &\textit{, if } n \geq 3 
+1 -  (2\binom{-4}{n-3}) + (4 \binom{-4}{n-2})  &\textit{, if } n \geq 3
 \end{cases}
 $$
 
@@ -373,22 +373,22 @@ Therefore, $\mathbb{I}$ can be defined as a combinatorial structure:
 $$
 \mathcal{I} = set(1cycle(\{\circ\}) + 2cycle(\{\circ\}))
 $$
-Hence, $I$ can be computed by: 
+Hence, $I$ can be computed by:
 $$
-exp\left(log(\frac{1}{1-z}) + \frac{1}{2} log(\frac{1}{1-z})^2\right) = 
+exp\left(log(\frac{1}{1-z}) + \frac{1}{2} log(\frac{1}{1-z})^2\right) =
 $$
 
 $$
 exp\left(log(\frac{1}{1-z}) + log(((\frac{1}{1-z})^2)^{\frac{1}{2}})\right) = e^z + e^{z^2 \frac{1}{2}} = e^{z + \frac{z^2}{2}}
 $$
 
-#### 59) Let $\mathcal{T}$ be the class of rooted and labelled trees, i.e. the $n$ vertices of a tree of size $n$ are labelled with the labels $1,2, \dots, n$. Use the theory of combinatorial constructions to determine a functional equation for the exponential generating function of $\mathcal{T}$. 
+#### 59) Let $\mathcal{T}$ be the class of rooted and labelled trees, i.e. the $n$ vertices of a tree of size $n$ are labelled with the labels $1,2, \dots, n$. Use the theory of combinatorial constructions to determine a functional equation for the exponential generating function of $\mathcal{T}$.
 
 
 **Finally, apply the following theorem to prove that the number of trees in $\mathcal{T}$ which have $n$ vertices is equal to $n^{n-1}. (You are not asked to prove the theorem.)**
 *Theorem: Let $\Phi(w) = \sum_{n \geq 0} \phi_0 \neq 0$ with $\phi_0 \neq 0$. If $z = w/\Phi(w)$, then $[z^n]w = \frac{1}{n} [w^{n-1}] \Phi(w)^n$*
 
-#### 60) Show the following formula for Stirling numbers of the second kind: 
+#### 60) Show the following formula for Stirling numbers of the second kind:
 $$
 \sum_{n \geq 0} \sum_{k = 0}^{n} S_{n,k} \frac{z^n}{n!} u^k = e^{u(e^x -1)}
 $$

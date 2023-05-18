@@ -6,20 +6,20 @@ We proceed by induction on the size of $A$ and show that $A$ has $2^{|A|-1}$ odd
 
 * Base case: $|A| = n = 1$, then $A$ has two subsets, namely $A$ and $\emptyset$, thus we have $2^{0} = 2^{n-1}$ odd-sized subsets.
 
-* Induction hypothesis: Let $A$ be a set of size $n$, then A has $2^{n-1}$ odd-sized subsets. 
+* Induction hypothesis: Let $A$ be a set of size $n$, then A has $2^{n-1}$ odd-sized subsets.
 
 * Induction step: Let $A$ be a set, such that $|A| = n+1$ and let $x \in A$. We construct a set $A'$ by $A' = A \backslash \{ x \}$.
 
-    Then by construction of $A'$, $|A'| = n$ and thus by IH, $A'$ has $2^{n-1}$ odd-sized subsets. All possible subsets of $A$ can now be constructed through all subsets of $A'$ joined with $\{S \cup \{x\} | S \subseteq A'\}$. 
-    Now, for each odd-sized subset $A'_{1} \subseteq A'$, $A'_{1} \cup \{x\}$ is even sized, and on the other hand for each even-sized, subset $A'_{2} \subseteq A'$, $A'_{2} \cup \{x\}$ is odd-sized. 
+    Then by construction of $A'$, $|A'| = n$ and thus by IH, $A'$ has $2^{n-1}$ odd-sized subsets. All possible subsets of $A$ can now be constructed through all subsets of $A'$ joined with $\{S \cup \{x\} | S \subseteq A'\}$.
+    Now, for each odd-sized subset $A'_{1} \subseteq A'$, $A'_{1} \cup \{x\}$ is even sized, and on the other hand for each even-sized, subset $A'_{2} \subseteq A'$, $A'_{2} \cup \{x\}$ is odd-sized.
 
     The amount of odd-sized subsets of $A$ can thus be counted by taking all odd-sized subsets of $A'$, of which there are $2^{n-1}$ combined with all even-sized subsets of $A'$ which are combined with $x$ of which there are also $2^{n-1}$ thus we have $2^{n-1} + 2^{n-1} = 2^n$ odd-sized subsets.
-    
+
     Since all subsets of $A$ are either even or odd, by the sum principle $|A_{even} \cup A_{odd}| = |A_{even}| + |A_{odd}|$, i.e. $2^{n+1} = 2^n + |A_{even}|$, thus $|A_{odd}| = 2^n = |A_{even}|$.
-    
+
 #### 32) Find the number of ways to place $n$ rooks on a $n \times n$ chessboard such that no two of them attack each other.
 
-We observe that each of the $n$ rooks occupies one row, otherwise two rooks would attack each other. 
+We observe that each of the $n$ rooks occupies one row, otherwise two rooks would attack each other.
 
 A column can then be chosen for each rook as follows:
 The first rook can be placed on any of the $n$ columns, the second can be placed on any but the column the first rook occupies, etc.
@@ -57,7 +57,7 @@ $$
 \{1,19\}, \{2,18\}, \{3,17\}, \{4,16\}, \{5,15\}, \{6,14\}, \{7,13\}, \{8,12\}, \{9,11\},\{10\}
 $$
 
-For each of these boxes, one can see that each of them surmount to $20$ when it contains two different numbers and their difference surmounts to $0$ when equal. As we have $11$ integers, by the pigeonhole principle at least one class will have two numbers. 
+For each of these boxes, one can see that each of them surmount to $20$ when it contains two different numbers and their difference surmounts to $0$ when equal. As we have $11$ integers, by the pigeonhole principle at least one class will have two numbers.
 
 Since, for each class, if there are two numbers $a,b$ assigned to the same class, we know either $20 | (a + b)$ if $a \neq b$ or $20 | (a-b)$ if $a = b$.
 
@@ -100,7 +100,7 @@ we now distinguish based on the values of $\pi(i)$:
 
 * case 1: $\pi(i) = n$, then $i$ and $n$ are mapped to each other and the number of derangements surmounts to $d_{n-2}$.
 * case 2: $\pi(i) \neq n$: we can count the number of derangements by setting $\pi(n) = \pi(i)$ and derangement over $n-1$ elements, therefore the number of derangements here is $d_{n-1}$.
-    
+
 Since we have $n-1$ options for choosing $i$, we count:
 $$
 d_n = (n-1) (d_{n-1} + d_{n_2})
@@ -110,7 +110,7 @@ $$
 $$
 d_n = n d_{n-1} + (-1)^n
 $$
-and 
+and
 $$
 d_n = n! \sum_{k=0}^n \frac{(-1)^k}{k!}
 $$
@@ -135,27 +135,27 @@ We then show $n! \sum_{k=0}^n \frac{(-1)^k}{k!} = n d_{n-1} + (-1)^n$ by inducti
 * Base case: $n=1$: $1!(\frac{(-1)^0}{1!}) + 1!(\frac{(-1)^1}{1!}) = 1 \times 1 + (-1)^1 = 0 = 0$
 * Induction hypothesis: $n \times d_{n-1} + (-1)^n = n! \sum_{k=0}^n \frac{(-1)^k}{k!}$
 
-* Induction step: 
+* Induction step:
 $$
 \begin{align}
 (n+1)d_{n} + (-1)^{n+1} &= (n+1)! \sum_{k=0}^{n+1} \frac{(-1)^k}{k!} \Leftrightarrow\\
 (n+1) d_n + (-1)^{n+1} &= (-1)^{n+1} + (n+1)!\sum_{k=0}^{n} \frac{(-1)^k}{k!}
-\Leftrightarrow \\ (n+1) d_n + (-1)^{n+1} &= 
+\Leftrightarrow \\ (n+1) d_n + (-1)^{n+1} &=
 (-1)^{n+1} + (n+1) n! \sum_{k=0}^n \frac{(-1)^k}{k!} \Leftrightarrow\\ (n+1) d_n + (-1)^{n+1} &= (-1)^{n+1} +(n+1) d_n
 \end{align}
 $$
 
-#### 37) Compute the number of elements of the set $\{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000$ and $x$ is neither a square nor a 3rd, 4th or 5th power of some $y \in \mathbb{N}\}$. 
+#### 37) Compute the number of elements of the set $\{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000$ and $x$ is neither a square nor a 3rd, 4th or 5th power of some $y \in \mathbb{N}\}$.
 
 We define the following sets:
 
-* $S_2 = \{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000 \land \exists y \in \mathbb{N}, x = y^2\} = \{1,2,4, \dots 99856\}$, where $|S_2| = 316$. 
+* $S_2 = \{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000 \land \exists y \in \mathbb{N}, x = y^2\} = \{1,2,4, \dots 99856\}$, where $|S_2| = 316$.
 
-* $S_3 = \{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000 \land \exists y \in \mathbb{N}, x = y^3\} = \{1,8,27, \dots 97336\}$, where $|S_3| = 46$. 
+* $S_3 = \{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000 \land \exists y \in \mathbb{N}, x = y^3\} = \{1,8,27, \dots 97336\}$, where $|S_3| = 46$.
 
-* $S_4$ does not need to be considered as all its elements are included in $S_2$ already. 
+* $S_4$ does not need to be considered as all its elements are included in $S_2$ already.
 
-* $S_5 = \{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000 \land \exists y \in \mathbb{N}, x = y^5\} = \{1,32, \dots 100 000\}$, where $|S_5| = 10$. 
+* $S_5 = \{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000 \land \exists y \in \mathbb{N}, x = y^5\} = \{1,32, \dots 100 000\}$, where $|S_5| = 10$.
 
 We observe the intersections of the considered sets in order to apply the Inclusion-Exclusion Principle:
 
@@ -166,11 +166,11 @@ We observe the intersections of the considered sets in order to apply the Inclus
 
 The size of the set is then defined by the Inclusion-Exclusion-Principle as follows:
 
-$|S| - |S_2| - |S_3| - |S_5| + |S_2 \cap S_3| + |S_3 \cap S_5| + |S_2 \cap S_5| - |S_2 \cap S_3 \cap S_5|$ 
+$|S| - |S_2| - |S_3| - |S_5| + |S_2 \cap S_3| + |S_3 \cap S_5| + |S_2 \cap S_5| - |S_2 \cap S_3 \cap S_5|$
     $= 100 000 - 316 - 46 - 10 + 6 + 2 + 3 - 1 = 99638$
 
-#### 38) 
-**Let $n \in \mathbb{N}$. Prove Pascal's recurrence 
+#### 38)
+**Let $n \in \mathbb{N}$. Prove Pascal's recurrence
 $$
 \binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}
 $$
@@ -188,7 +188,7 @@ $$
 $$
 Note that at $\dagger$ we simply calculated $+k-k$ which is equivalent to $0$ and thus a valid transformation.
 
-**and prove 
+**and prove
 $$
 \sum_{k=0}^n \binom{n}{k}^2 = \binom{2n}{n}
 $$
@@ -217,7 +217,7 @@ We formulate the question *How many different subsets of size $n$ does a set of 
 
     Since both formulas answer the same question they are equivalent according to combinatorial interpretation.
 
-#### Let $n,m \in \mathbb{N}$. Give two proofs of the identity 
+#### Let $n,m \in \mathbb{N}$. Give two proofs of the identity
 $$
 \sum_{k=0}^{n} \binom{m+k}{k} = \binom{n+m+1}{m+1}
 $$
@@ -265,7 +265,7 @@ $$
 
 We count the number of bitstrings of length $n+m+1$ with exactly $m+1$ $'1'$s.
 
-* *RHS:* 
+* *RHS:*
     We choose $m+1$ positions out of $n+m+1$ possible ones to place the $m+1$ $'1'$s.
 * *LHS:*
     We consider the position of the last $'1'$ in the bitstring at $m+k+1$, then $n-k$ bits are $'0'$ after $m+k+1$. $k$ bits out of the possible $m+k$ positions can be $'0'$, i.e. $\binom{m+k}{k}$ possibilities to set the remaining bits exist. Taking the sum for all possible positions of the last $'1'$ from $m+1$ to $m+n+1$ yields all bitstrings of length $m+n+1$ with $m+1$.
@@ -285,7 +285,7 @@ $$
 $$
 we can extract $-1$ from each factor, meaning we extract $k$ times $(-1).
 $$
-= \frac{(-1)^k (x) (x+1) \times \dots \times (x+k-1)} = 
+= \frac{(-1)^k (x) (x+1) \times \dots \times (x+k-1)} =
 $$
 we now expand by $\frac{(x-1)!}{(x-1)!}$, which is equivalent to $1$.
 $$

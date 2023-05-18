@@ -1,6 +1,6 @@
 # Summary
 
-This is a collection of solution suggestions for the discrete mathematics exercises from 2021. 
+This is a collection of solution suggestions for the discrete mathematics exercises from 2021.
 We do not guarantee their correctness.
 
 - [Sheet 1](./sheet_1.md)

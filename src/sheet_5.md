@@ -7,7 +7,7 @@ By definition: $s_{n,k} = s_{(n-1, k-1)} + (n-1) s_{(n-1,k)}$
 We proceed by induction on $n$:
     * Base case: $n=2$, then $s_(2,2) = 1! H_1 \Leftrightarrow 1 = 1$
     * Induction Hypothesis: $s_{(n,2)} = (n-1)! H_{n-1}$
-    * Induction step: 
+    * Induction step:
         $$
         s_{(n+1,2)} = n! H_n \Leftrightarrow s_{(n,1)} + n s_{(n,2)} = n! H_n \Leftrightarrow
         $$
@@ -19,8 +19,8 @@ We proceed by induction on $n$:
         $$
         \Leftrightarrow \frac{1}{n} + H_{n-1} = H_n \Leftrightarrow \frac{1}{n} + \sum_{k=1}^{n-1} \frac{1}{k} = H_n \Leftrightarrow \sum_{k=1}^{n} \frac{1}{k} = H_n \Leftrightarrow H_n = H_n
         $$
-        
-#### 42) Let $S_{n,k}$ be the Stirling numbers of the second kind, that is, the number of partitions of the set $\{1,2, \dots, n\}$ into $k$ (non-empty subsets). Set $F_k(x) := \sum_{n \geq k} S_{n,k} x^n$. Prove that: 
+
+#### 42) Let $S_{n,k}$ be the Stirling numbers of the second kind, that is, the number of partitions of the set $\{1,2, \dots, n\}$ into $k$ (non-empty subsets). Set $F_k(x) := \sum_{n \geq k} S_{n,k} x^n$. Prove that:
 $$
 F_1(x) = \frac{x}{1-x}
 $$
@@ -54,7 +54,7 @@ and
 $$
 \heartsuit =  \sum_{n \geq 1} 2^n x^{n+1} = 2x^2 \sum_{n \geq 0} 2^n x^n = 2x^2 \frac{1}{1-2x} = \frac{2x^2}{1-2x}
 $$
-**Furthermore, show that the functions $F_k(x)$ satisfy the recurrence relation $F_k(x) = \frac{x}{1-kx}F_{k-1}(x)$** 
+**Furthermore, show that the functions $F_k(x)$ satisfy the recurrence relation $F_k(x) = \frac{x}{1-kx}F_{k-1}(x)$**
 we start with the right hand side:
 $$
 \frac{x}{1-kx}F_{k-1}(x) = \frac{x}{1-kx} \sum_{n \geq k-1} S_{n,k-1} x^n =
@@ -92,7 +92,7 @@ F_k(x) = \frac{x^{k-1}}{(1-kx)(1-(k-1)x) \cdots (1-2x)} F_1(x)
 $$
 we substitute the definition of $F_1 = \frac{x}{1-x}$ and multiply it into the term.
 $$
-F_k(x) = \frac{x^{k}}{(1-kx)(1-(k-1)x)\cdots (1-2x) (1-x)} 
+F_k(x) = \frac{x^{k}}{(1-kx)(1-(k-1)x)\cdots (1-2x) (1-x)}
 $$
 #### 43) Prove the following identity:
 $$
@@ -117,9 +117,9 @@ x^n = x \times x^{n-1} =
 $$
 Let $i = n-1$, we apply the induction step for $i+1=n$:
 $$
-= x \sum_{k=0}^{n-1} S_{n-1,k} (x)_{k} = 
+= x \sum_{k=0}^{n-1} S_{n-1,k} (x)_{k} =
 $$
-we start the sum at 1 since $S_{n-1,0}$, thus the first summand does not affect the sum's value 
+we start the sum at 1 since $S_{n-1,0}$, thus the first summand does not affect the sum's value
 
 $$
 = \sum_{k=1}^{n-1}S_{n-1,k} (x)_k x =
@@ -145,15 +145,15 @@ $$
 
 #### 44) Let $A,B$ be two finite sets with $|A| = n$ and $|B| = k$. How many injective mappings $f: A \rightarrow B$ are there?
 
-We assume $k \geq n$ since otherwise no mapping is possible. For the first element in $n$, there are $k$ possibilities. 
+We assume $k \geq n$ since otherwise no mapping is possible. For the first element in $n$, there are $k$ possibilities.
 For the second one, $k-1$, etc...
-For the last element in $n$ there are still $k-(n-1)$ choices, thus we have $k(k-1)\times \dots \times (k-n+1)$ mappings, this is the falling factorial $k^{\underline{n}}$ which surmounts to 
+For the last element in $n$ there are still $k-(n-1)$ choices, thus we have $k(k-1)\times \dots \times (k-n+1)$ mappings, this is the falling factorial $k^{\underline{n}}$ which surmounts to
 $$
 \frac{k!}{(k-n)!}
 $$
 **Furthermore, show that the number of surjective mappings $f: A \rightarrow B$ equals $k!S_{n,k}$.**
 
-Assume $n \geq k$, otherwise no such mapping is possible. 
+Assume $n \geq k$, otherwise no such mapping is possible.
 We want all possible partitions of $A$ into $k$ non-empty subsets which are calculated by $S(n,k)$. For each of these non-empty partitions of elements in $A$ we select one item in $B$ for the elements in the subset of $A$ to map to.
 For the first partition we have $k$ options from $B$, $k-1$ for the second, etc. and for the last element in $B$, 1 option remains. Thus $k!$ options per partitioning exist, i.e. $k!S_{n,k}$.
 
@@ -197,7 +197,7 @@ $$
 Now, let $\tilde F(z)$ be the generating function for coefficient $n^2$, of which we just calculated the generating function.
 We take the sum with coefficient $1$ of which we know the GF ($\frac{1}{1-z}$) and apply the cauchy product:
 $$
-\sum_{i \geq 0} i^2z^n \times \sum_{j \geq 0} z^n = \sum_{n \geq 0} \sum_{k=0}^{n} k^2 z^n 
+\sum_{i \geq 0} i^2z^n \times \sum_{j \geq 0} z^n = \sum_{n \geq 0} \sum_{k=0}^{n} k^2 z^n
 $$
 Therefore:
 $$
@@ -238,14 +238,14 @@ $$
 \frac{(-4)(-5) \dots (-4-(n-2)) (-1)^{n-1}}{(n-1)! } + \frac{(-4)(-5) \dots (-4-(n-3)) (-1)^{n-2}}{(n-2)!} =
 $$
 $$
-= \frac{(4)(5) \dots (n - 2 + 4)}{(n-1)!} + \frac{(4)(5) \dots (n - 3 + 4)}{(n-2)!} = \frac{(4)(5) \dots (n + 2)}{(n-1)!} + \frac{(4)(5) \dots (n + 1)}{(n-2)!} = 
+= \frac{(4)(5) \dots (n - 2 + 4)}{(n-1)!} + \frac{(4)(5) \dots (n - 3 + 4)}{(n-2)!} = \frac{(4)(5) \dots (n + 2)}{(n-1)!} + \frac{(4)(5) \dots (n + 1)}{(n-2)!} =
 $$
 
 $$
 = \binom{n+2}{3} \binom{n+1}{3} = \frac{(n+2)(n+1)n + (n+1)n(n-1)}{3!} = \frac{(2n+1)(n+1)n}{3!}
 $$
 
-#### 48) Prove the following identity: 
+#### 48) Prove the following identity:
 $$
 \sum_{n \geq 0} \binom{2n}{n}z^n = \frac{1}{\sqrt{1-4z}}.
 $$
@@ -253,9 +253,9 @@ $$
 We start with the right hand side:
 
 $$
-\frac{1}{\sqrt{1-4z}} = (1-4z)^{-\frac{1}{2}} = 
+\frac{1}{\sqrt{1-4z}} = (1-4z)^{-\frac{1}{2}} =
 $$
-by the generalised binomial theorem with $x = 1$ and $y=-4z$, since $x$ is $1$, only $y$ is considered. 
+by the generalised binomial theorem with $x = 1$ and $y=-4z$, since $x$ is $1$, only $y$ is considered.
 $$
 = \sum_{n=0}^{\infty} \binom{-\frac{1}{2}}{n} (-4z)^n = \sum_{n=0}^{\infty} \binom{-\frac{1}{2}}{n} (-4)^n z^n =
 $$
@@ -265,11 +265,11 @@ $$
 $$
 we extract (-\frac{1}{2}^n) from each factor
 $$
-= \sum_{n=0}^{\infty} (-4)^n (-\frac{1}{2}^n) \frac{1 \times 3 \times (2n - 1)}{n!} z^n = 
+= \sum_{n=0}^{\infty} (-4)^n (-\frac{1}{2}^n) \frac{1 \times 3 \times (2n - 1)}{n!} z^n =
 $$
 all odds as factorials are $!!$
 $$
-= \sum_{n=0}^{\infty} 2^n \frac{(2n-1)!!}{n!} z^n = 
+= \sum_{n=0}^{\infty} 2^n \frac{(2n-1)!!}{n!} z^n =
 $$
 since $(2n-1)!! = \frac{(2n)!}{2^n n!}$ by definition
 $$
@@ -344,7 +344,7 @@ $$
 \Leftrightarrow F(z) - a_0 = 3z F(z) - 2 \frac{z}{1-z} \Leftrightarrow  $$
 
 $$
-\Leftrightarrow F(z) - 3z F(z) =  - 2 \frac{z}{1-z} + a_0 
+\Leftrightarrow F(z) - 3z F(z) =  - 2 \frac{z}{1-z} + a_0
 $$
 
 $$
