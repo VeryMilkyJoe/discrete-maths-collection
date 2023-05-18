@@ -1,4 +1,6 @@
-# Exercise Sheet 4
+---
+title: Exercise Sheet 4
+---
 
 #### 31) Let $A$ be a non-empty set. Show that $A$ has as many subsets with an odd number of elements as subsets with an even number of elements.
 
@@ -43,19 +45,20 @@ Example with $n=3$, i.e. $\{1,2,3\}$:
 Here we have $3$ fixed points of size $1$ (in column 1), namely each of the elements, and one fixed point of size $3$, where all elements are contained (column 3).
 
 
-|          | 1        |        2 |        3 |
-|------    | -------- | -------- | -------- |
-|**1**     | 1        | 0        | 1        |
-|**2**     | 1        | 0        | 1        |
-|**3**     | 1        | 0        | 1        |
+|       | 1   | 2   | 3   |
+| ----- | --- | --- | --- |
+| **1** | 1   | 0   | 1   |
+| **2** | 1   | 0   | 1   |
+| **3** | 1   | 0   | 1   |
 
 
 #### 34) Let $A$ be a set of 11 positive integers such that for all $x \in A$ we have $20 \nmid x$. Prove that there are two distinct integers $a,b \in A$ such that $20 | (a+b)$ or $20 | (a-b)$.
 
 We can create $10$ boxes such that we distribute the numbers into those boxes based on their remainder modulo $20$ as follows:
-$$
+
+\begin{gather*}
 \{1,19\}, \{2,18\}, \{3,17\}, \{4,16\}, \{5,15\}, \{6,14\}, \{7,13\}, \{8,12\}, \{9,11\},\{10\}
-$$
+\end{gather*}
 
 For each of these boxes, one can see that each of them surmount to $20$ when it contains two different numbers and their difference surmounts to $0$ when equal. As we have $11$ integers, by the pigeonhole principle at least one class will have two numbers.
 
@@ -64,9 +67,10 @@ Since, for each class, if there are two numbers $a,b$ assigned to the same class
 Thus, every set $A$ of $11$ integers such that $20 \nmid x$ for all $x \in A$ contains some $a,b$ such that $20 | (a + b)$ or $20 | (a-b)$.
 
 #### 35) Let $n \in \mathbb{N}$, prove the identities:
-$$
+
+\begin{gather*}
     \sum_{k=0}^{n} 2^k = 2^{n+1}-1
-$$
+\end{gather*}
 
 We count the number of bitstrings of length $n+1$ containing at least one '1'.
 
@@ -75,9 +79,11 @@ We count the number of bitstrings of length $n+1$ containing at least one '1'.
     There are $2^{n+1}$ possible bitstrings of length $n+1$, but the string containing only zeroes contains no '1' thus we subtract $1$ from the possible bitstrings.
 
 **and**
-$$
+
+\begin{gather*}
 \sum_{k=1}^n (n-k)2^{(k-1)} = 2^n - n - 1
-$$
+\end{gather*}
+
 We count the number of bitstrings of length $n+1$ containing at least two '1's.
 
 *  *LHS*: For each possible position $k$, $1 \leq k \leq n$ in the bitstring, we can place a '1' at position $k$ and place a second '1' at some position to the left of $k$ while fixing the rest of the bits toi the left of $k$ to zero guaranteeing two ones in the string, meaning there are $n-k$ possibilities to place that other '1' and for each position of that '1' to the left of $k$, we have $2^{k-1}$ possibilites to choose the bits to the right of $k$. Thus, we have $(n-k)2^{k-1}k$ possibilites for each fixed '1' at each position $k$.
@@ -86,10 +92,12 @@ We count the number of bitstrings of length $n+1$ containing at least two '1's.
 
 
 #### 36) Let $D_n \subset S_n$ be the fixed-point-free permutations fo $\{1,2, \dots, n\}$, i.e. all permutations $\pi \in S_n$ with $\pi(i) \neq i$ for all $i$. The *derangement numbers* are defined as $d_n := |D_n|$. Prove the recurrence:
+
 \begin{cases}
     d_n = (n-1)(d_{n-1} + d_{n-2}), & \text{for $n \geq 2$}.\\
     d_0 = 1, d_1 = 0.
-  \end{cases}
+\end{cases}
+
 **using a combinatorial interpretation.**
 
 We argue about the size of $D_n$ by counting its elements.
@@ -107,28 +115,34 @@ d_n = (n-1) (d_{n-1} + d_{n_2})
 $$
 
 **Furthermore, prove that this recurrence relation implies**
-$$
+
+\begin{gather*}
 d_n = n d_{n-1} + (-1)^n
-$$
+\end{gather*}
+
 and
-$$
+
+\begin{gather*}
 d_n = n! \sum_{k=0}^n \frac{(-1)^k}{k!}
-$$
+\end{gather*}
 
 We first show that $d_n = n! \sum_{k=0}^n \frac{(-1)^k}{k!}$. We count the number $d_n$ of fixed point free permutations by subtracting the number of permutations which have some fixed point from all permutations. The former are defined as follows:
-$$
+
+\begin{gather*}
 \sum_{k=1}^n \binom{n}{k} (n-k)! (-1)^{k-1}
-$$
+\end{gather*}
+
 i.e. we choose $k$ elements to fix, permute the remaining elements and apply the inclusion exclusion principle.
 
 Then the number of derangements can be derived as follows.
 
-$$
+\begin{gather*}
 d_n = n! - \sum_{k=1}^n \binom{n}{k} (n-k)! (-1)^{k-1} = n!- \sum_{k=1}^n \frac{n!}{k!(n-k)!} (n-k)! (-1)^k-1 =
-$$
-$$
+\end{gather*}
+
+\begin{gather*}
 =n! - \sum_{k=1}^n \frac{n!}{k!} (-1)^{k-1} = \sum_{k=0}^n \frac{n!}{k!} (-1)^k = n! \sum_{k=0}^n \frac{(-1)^k}{k!}
-$$
+\end{gather*}
 
 We then show $n! \sum_{k=0}^n \frac{(-1)^k}{k!} = n d_{n-1} + (-1)^n$ by induction.
 
@@ -136,14 +150,14 @@ We then show $n! \sum_{k=0}^n \frac{(-1)^k}{k!} = n d_{n-1} + (-1)^n$ by inducti
 * Induction hypothesis: $n \times d_{n-1} + (-1)^n = n! \sum_{k=0}^n \frac{(-1)^k}{k!}$
 
 * Induction step:
-$$
+
 \begin{align}
 (n+1)d_{n} + (-1)^{n+1} &= (n+1)! \sum_{k=0}^{n+1} \frac{(-1)^k}{k!} \Leftrightarrow\\
 (n+1) d_n + (-1)^{n+1} &= (-1)^{n+1} + (n+1)!\sum_{k=0}^{n} \frac{(-1)^k}{k!}
 \Leftrightarrow \\ (n+1) d_n + (-1)^{n+1} &=
 (-1)^{n+1} + (n+1) n! \sum_{k=0}^n \frac{(-1)^k}{k!} \Leftrightarrow\\ (n+1) d_n + (-1)^{n+1} &= (-1)^{n+1} +(n+1) d_n
 \end{align}
-$$
+
 
 #### 37) Compute the number of elements of the set $\{x \in \mathbb{N} \ | \ 1 \leq x \leq 100 000$ and $x$ is neither a square nor a 3rd, 4th or 5th power of some $y \in \mathbb{N}\}$.
 
@@ -170,31 +184,43 @@ $|S| - |S_2| - |S_3| - |S_5| + |S_2 \cap S_3| + |S_3 \cap S_5| + |S_2 \cap S_5| 
     $= 100 000 - 316 - 46 - 10 + 6 + 2 + 3 - 1 = 99638$
 
 #### 38)
+
 **Let $n \in \mathbb{N}$. Prove Pascal's recurrence
-$$
+
+\begin{gather*}
 \binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}
-$$
+\end{gather*}
+
 algebraically using the closed $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ of the binomial coefficient**
 
-$$
+\begin{gather*}
 \frac{n!}{k!(n-k)!} = \frac{(n-1)!n}{k!(n-k)!} = (n-1)! \frac{n}{k!(n-k)!} =
-$$
-$$= (n-1)! \left( \frac{n-k}{k!(n-k)!} + \frac{k}{k!(n-k)!} \right)^\dagger = \frac{(n-1)!(n-k)}{k!(n-k)!} + \frac{(n-1)!k}{k!(n-k)!} =$$
-$$
+\end{gather*}
+
+\begin{gather*}
+= (n-1)! \left( \frac{n-k}{k!(n-k)!} + \frac{k}{k!(n-k)!} \right)^\dagger = \frac{(n-1)!(n-k)}{k!(n-k)!} + \frac{(n-1)!k}{k!(n-k)!} =
+\end{gather*}
+
+\begin{gather*}
 \frac{(n-1)!(n-k)}{k!(n-k)(n-k-1)!} + \frac{(n-1)!k}{k(k-1)!(n-k)!} = \frac{(n-1)!}{k!(n-k-1)!} + \frac{(n-1)!}{(k-1)!(n-k)!}=
-$$
-$$
+\end{gather*}
+
+\begin{gather*}
 = \binom{n-1}{k} + \binom{n-1}{k-1}
-$$
+\end{gather*}
+
 Note that at $\dagger$ we simply calculated $+k-k$ which is equivalent to $0$ and thus a valid transformation.
 
 **and prove
-$$
+
+\begin{gather*}
 \sum_{k=0}^n \binom{n}{k}^2 = \binom{2n}{n}
-$$
+\end{gather*}
+
 using a combinatorial interpretation of the binomial coefficients.**
 
 We formulate the question *How many different subsets of size $n$ does a set of size $2n$ have?*
+
 * $\binom{2n}{n}$: There are $\binom{2n}{n}$ possibilites to choose $n$ elements from a set of $2n$ elements.
 * $\sum_{k=0}^n \binom{n}{k}^2$: We can answer the question by dividing the $2n$ elements into two sets $A,B$ of size $n$ each for which $A \cap B = \emptyset$. When we now choose $n$ elements from the original set, we can do this by choosing some from $A$ and some from $B$.
 
@@ -207,58 +233,84 @@ We formulate the question *How many different subsets of size $n$ does a set of 
     $n$ from $A$, $0$ from $B$: $\binom{n}{n}\binom{n}{0}$
 
     Therefore, the total number of ways to choose sets of size $n$ from $A$ and $B$ is:
-    $$
+
+    \begin{gather*}
     \binom{n}{0}\binom{n}{n} + \binom{n}{1} \binom{n}{n-1} \dots + \binom{n}{n}\binom{n}{0}
-    $$
+    \end{gather*}
+
     We observe that $\binom{n}{0} = \binom{n}{n}$, $\binom{n}{1} = \binom{n}{n-1}$, etc., therefore we can write:
-    $$
+
+    \begin{gather*}
     \binom{n}{0}^2+\binom{n}{1}^2 + \dots + \binom{n}{n}^2,
-    $$ i.e. $$\sum_{k=0}^2 \binom{n}{k}^2$$
+    \end{gather*}
+
+    i.e.
+
+    \begin{gather*}
+    \sum_{k=0}^2 \binom{n}{k}^2
+    \end{gather*}
 
     Since both formulas answer the same question they are equivalent according to combinatorial interpretation.
 
 #### Let $n,m \in \mathbb{N}$. Give two proofs of the identity
-$$
+
+\begin{gather*}
 \sum_{k=0}^{n} \binom{m+k}{k} = \binom{n+m+1}{m+1}
-$$
+\end{gather*}
+
 **one by induction:**
 
 * Base case: $n=1$
 
-$$
+
+\begin{gather*}
 \binom{m}{0} + \binom{m+1}{1} = \binom{m+2}{m+1} \Leftrightarrow
-$$
+\end{gather*}
+
 by Pascal's rule:
-$$
+
+\begin{gather*}
 \Leftrightarrow 1 + \binom{m+1}{1} = \binom{m+1}{m} + \binom{m+1}{m+1} \Leftrightarrow 1+ \binom{m+1}{1} = \binom{m+1}{m} + 1 \Leftrightarrow
-$$
-$$
+\end{gather*}
+
+\begin{gather*}
 \Leftrightarrow \binom{m+1}{1} = \binom{m+1}{m}
-$$
+\end{gather*}
+
 which holds by symmetry ($\binom{n}{k} = \binom{n}{n-k}$)
 
 * Induction hypothesis:
-$$
+
+\begin{gather*}
 \sum_{k=0}^{n} \binom{m+k}{k} = \binom{n+m+1}{m+1}
-$$
+\end{gather*}
+
 holds for $n=i, i \in \mathbb{Z}_{+}$.
 
 * Induction step: we start with the LHS:
-$$
+
+\begin{gather*}
 \sum_{k=0}^{n+1} \binom{m+k}{k} =
-$$
+\end{gather*}
+
 we extract the first summand and apply the induction hypothesis:
-$$
+
+\begin{gather*}
 = \binom{n+m+1}{n+1} + \binom{n+m+1}{m+1} =
-$$
+\end{gather*}
+
 by symmetry ($n = n+m+1, k = n+1$)
-$$
+
+\begin{gather*}
 = \binom{n+m+1}{m} + \binom{n+m+1}{m+1}=
-$$
+\end{gather*}
+
 by Pascal's rule
-$$
+
+\begin{gather*}
 = \binom{n+m+2}{m+1}
-$$
+\end{gather*}
+
 
 **and one by combinatorial interpretation:**
 *Hint: Consider 0-1 sequences and group them according to the position of the last 1.*
@@ -271,28 +323,39 @@ We count the number of bitstrings of length $n+m+1$ with exactly $m+1$ $'1'$s.
     We consider the position of the last $'1'$ in the bitstring at $m+k+1$, then $n-k$ bits are $'0'$ after $m+k+1$. $k$ bits out of the possible $m+k$ positions can be $'0'$, i.e. $\binom{m+k}{k}$ possibilities to set the remaining bits exist. Taking the sum for all possible positions of the last $'1'$ from $m+1$ to $m+n+1$ yields all bitstrings of length $m+n+1$ with $m+1$.
 
 #### 40) Prove that for all complex numbers $x$ and all $k \in \mathbb{N}$ we have:
-$$
+
+\begin{gather*}
 \binom{-x}{k} = (-1)^k \binom{x+k-1}{k}
-$$
+\end{gather*}
 
 We know for complex numbers $x$:
-$$
+
+\begin{gather*}
 \binom{-x}{k} = \frac{-x^{\underline{k}}}{k!} =
-$$
+\end{gather*}
+
 where $x^{\underline{k}}$ denotes the falling factorials, defined by: $x^{\underline{k}} = x * (x-1)* \dots * (x-k+1)$.
-$$
+
+\begin{gather*}
 = \frac{(-x)(-x-1)\times \dots \times (-x-k+1)}{k!} =
-$$
+\end{gather*}
+
 we can extract $-1$ from each factor, meaning we extract $k$ times $(-1).
-$$
+
+\begin{gather*}
 = \frac{(-1)^k (x) (x+1) \times \dots \times (x+k-1)} =
-$$
+\end{gather*}
+
 we now expand by $\frac{(x-1)!}{(x-1)!}$, which is equivalent to $1$.
-$$
+
+\begin{gather*}
 = (-1)^k \frac{(x)(x+1) \times \dots \times (x+k-1)(x-1)!}{k!(x-1)!} =
-$$
+\end{gather*}
+
 we observe that the numerator is equivalent to $(x+k-1)!$ which is then equivalent to the right hand side by definition of the binomial coefficient.
-$$
+
+\begin{gather*}
 (-1)^k \frac{(x+k-1)!}{k!(x-1)!} = (-1)^k \binom{x+k-1}{k}
-$$
+\end{gather*}
+
 
