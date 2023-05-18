@@ -3,69 +3,87 @@ title: Exercise Sheet 2
 ---
 
 #### 11) $K_n$ denotes the complete graph with  $n$ vertices. Show that the number of spanning trees of $K_n$ is $n^{n-2}$.
+
 We observe that by completeness of $K_n$, its adjacency matrix is the $n \times n$ matrix of ones, similarly its degree matrix is the $n \times n$ matrix with $n$ on its diagonal.
 
+\begin{gather*}
 $D(K_n) = \begin{pmatrix}
         n & 0 & 0 & \dots \\
         0 & n & 0 &\dots \\
         0 & 0 & n &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
     \end{pmatrix}$
+\end{gather*}
 
+\begin{gather*}
 $A(K_n) = \begin{pmatrix}
         1 & 1 & 1 & \dots \\
         1 & 1 & 1 &\dots \\
         1 & 1 & 1 &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
     \end{pmatrix}$
+\end{gather*}
 
 We can thus see that $L(K_n) = D(K_n) - A(K_n)$ is defined as follows:
 
+\begin{gather*}
 $L(K_n) = \begin{pmatrix}
         n-1 & -1 & -1 & \dots \\
         -1 & n-1 & -1 &\dots \\
         -1 & -1 & n-1 &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
     \end{pmatrix}$
+\end{gather*}
 
 We then delete the first row and column from $L(K_n)$ to get a new $n-1 \times n-1$ matrix $L_1$.
 
+\begin{gather*}
 $L_1(K_n) = \begin{pmatrix}
         1 & 1 & 1 & \dots \\
         -1 & n-1 & -1 &\dots \\
         -1 & -1 & n-1 &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
     \end{pmatrix}$
+\end{gather*}
 
 We can then add all other rows to the first row. We observe that each column in the resulting matrix $L_1(K_n)'$ contains exactly $n-2$ negative ones and one $n-2$ entry, thus the value in each column of row 1 is defined by $n-1-n-2 = 1$.
 
+\begin{gather*}
 $L_1(K_n)' = \begin{pmatrix}
         n-1 & -1 & -1 & \dots \\
         -1 & n-1 & -1 &\dots \\
         -1 & -1 & n-1 &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
     \end{pmatrix}$
+\end{gather*}
 
 We can then derive the matrix $L_1(K_n)''$ by adding the first row to each other row.
 
-
+\begin{gather*}
 $L_1(K_n)'' = \begin{pmatrix}
         1 & 1 & 1 & \dots \\
         0 & n & 0 &\dots \\
         0 & 0 & n &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
     \end{pmatrix}$
+\end{gather*}
 
 We observe that, $L_1(K_n)''$ is an upper triangular matrix and the determinant is thus calculated by $det(L_1(K_n)'')= l_{11} \times l_{22} \times \dots l_{n-1 \ n-1} = 1 \times n^{n-2} = n-2$.
+
 #### 12) If $T$ is a tree having no vertex of degree 2, then $T$ has more leaves than internal nodes. Prove this claim:
+
 **1) By induction.**
+
 --Proof by induction--
+
 * Base case: 2 leaves, no internal nodes :heavy_check_mark:
-```graphviz
-    graph G {
-    1 -- 2
-    }
-```
+
+    ```graphviz
+        graph G {
+        1 -- 2
+        }
+    ```
+
 * Induction Hypothesis:
     A tree $T=(V,E)$ with size $|V| < n$ and no vertices $v \in V$ with degree two has more leaves than internal nodes.
 * Induction step:
@@ -73,25 +91,35 @@ We observe that, $L_1(K_n)''$ is an upper triangular matrix and the determinant 
 **2) Consider the average degree and use the Handshaking Lemma.
     Let $T= (V,E)$ be a tree. Therefore, $|E| = |V| - 1$ as shown in exercise 1).
     We can insert this into the Handshaking Lemma:**
+
 $$
 \sum_{v \in V} d(v) = 2 (|V| -1)
 $$
+
 We consider the average degree of a node, which is
+
 $$
 \frac{\sum_{v \in V} d(v)}{|V|} = \frac{2(|V|-1)}{|V|}
 $$
+
 Now, since each internal node, contributes at least 3 to the sum of degrees and each leaf contibutes exactly one to that sum, let $i$ be the number of internal nodes and $l$ the number of leaf nodes in $T$.
+
 $$
 \frac{2(|V|-1)}{|V|} \geq \frac{3i+l}{|V|} = 2(|V|-1) \geq 3i+l
 $$
+
 and since $|V| = i+l$, $2(|V| -1) \geq 2i+|V|$, from which we subtract $|V|$, to get
+
 $$|V| - 2\geq 2i \Leftrightarrow \frac{|V|}{2} - 1 \geq i \Leftrightarrow \frac{|V|}{2} > i.$$
 
 Since $i$ represents less than half of the nodes in $V$, and all other nodes have to be leaf nodes, more nodes in $V$ are leaf nodes than internal nodes.
 
 #### 13) Let $G = (V,E)$ be a connected graph with an even number of vertices. Show that there is a (not necessarily connected) spanning subgraph in which all vertices have odd degree.
+
 We show that this property holds for trees, as all connected grahs have a tree as a subgraph.
+
 --Proof by induction--
+
 * Base case: $|V| = 2$, then $d(v) = 1$ for all vertices in the tree.
 * Induction hypothesis: Let $G=(V,E)$ be a connected graph with an even number of vertices and $|V| = k$, $k < n$, $G$  has a connected spanning subgraph where all $v \in V$ have an odd degree.
 * Induction step: We observe that $T$ has some node $v$ which is connected to at most one non-leaf. We apply a case distinction on the degree of $v$:
@@ -103,7 +131,8 @@ We show that this property holds for trees, as all connected grahs have a tree a
         Then $v$ is connected to an even number of leaves and one node $v_1$ which could be connected to some other node. This means there is a spanning subgraph $\dot G$, comprised of $v$ and its leaves, where all leaves trivially have odd degree and since we keep $(v,v_1)$, $v$ has an odd degree as well. We construct a spanning subgraph $G'$ by removing $v'$'s leaves and the edges connecting the leaves to $v$ and applying the induction hypothesis, since the number of vertices we removed were even. We can then get a spanning subgraph of $G$ by $\dot G \cup G'$.
 
 **Is this also true for non-connected graphs?**
-    No, we provide a counterexample:
+No, we provide a counterexample:
+
 ```graphviz
 graph {
 2--{1,3}
@@ -114,6 +143,7 @@ graph {
 The number of vertices is even, but there is no spanning subgraph such that all vertices have odd degree, seeing as we cannot remove edges or we lose the spanning property.
 
 #### 14) List all matroids $(E,S)$ with:
+
 * $E = \{1\}$:
     $$\{\emptyset\}, \{\emptyset, \{1\}\}$$
 * $E=\{1,2\}$:
@@ -145,8 +175,10 @@ $(E,S)$ is a matroid:
 #### 16) Prove that an independence system $(E,S)$ is a matroid iff for every $A \subseteq E$, all maximal independent subsets of $A$ have the same cardinality.
 =>) Assume $A,B \in S$ such that $A$ and $B$ are both maximal and w.l.o.g. $|A| > |B|$ and by the matroid property $B \cup \{x\} \in S$. Therefore $B$ is not a maximal independent subset of $E$. Contradiction!
 
-<=) This does not hold:
+* <=) This does not hold:
+
     --Counterexample--
+
     Let $(E,S) = M$ be an independence system such that:
     $$
     E = \{1,2,3,4,5,6,7\}
@@ -157,10 +189,12 @@ $(E,S)$ is a matroid:
 #### 17) Let $E_1$ and $E_2$ be two disjoint sets. Moreover, assume that $(E_1,S_1)$ and $(E_2,S_2)$ are matroids. Define $S := \{X \cup Y \ | \ X \in S_1 \text{ and } Y \in S_2\}$. Prove that $(E_1 \cup E_2, S)$ is a matroid.
 
 Let $A,B$ be arbitrary elements in $S$ such that, w.l.o.g $|A| > |B|$, then by construction of $(E_1 \cup E_2, S)$ we can deconstruct the sets as follows:
-$$
+
+\begin{gather*}
 A := A_1 \cup A_2\\
 B := B_1 \cup B_2
-$$
+\end{gather*}
+
 where $A_1,B_1$ are all elements in $A,B$ which occur in $S_1$ and $A_2,B_2$ the ones from $S_2$.
 Now, we know that either $|A_1| > |B_1|$ or $|A_2| > |B_2|$, let $A_i, B_i$ be the sets for which this property holds. Then, by $(E_i, S_i)$ being a matroid, there exists an $x \in A_i$ such that $B_i \cup \{x\} \in S_i$.
 Therefore, by definition of $(E_1 \cup E_2, S)$, $B_i \cup \{x\} \in S$.
