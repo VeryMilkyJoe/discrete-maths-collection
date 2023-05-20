@@ -1,5 +1,6 @@
 PANDOC=pandoc
 COMMON_ARGS=--mathjax --from markdown+tex_math_dollars+tex_math_single_backslash+tex_math_double_backslash --standalone
+PDF_EXTRAS=-H tex/deeplists.tex
 PANDOC_FILTERS=-F ./node_modules/.bin/mermaid-filter --lua-filter lua-graphiv-filter.lua
 SRC=src
 OUTPUT=output
@@ -11,7 +12,7 @@ OUTPUT=output
 
 %.pdf: $(SRC)/%.md
 	@mkdir -p $(OUTPUT)
-	$(PANDOC) $(COMMON_ARGS) $(PANDOC_FILTERS) $< -o $(OUTPUT)/$@
+	$(PANDOC) $(PDF_EXTRAS) $(COMMON_ARGS) $(PANDOC_FILTERS) $< -o $(OUTPUT)/$@
 
 clean:
 	rm $(OUTPUT)/*
