@@ -8,7 +8,10 @@ OUTPUT=output
 	@mkdir -p $(OUTPUT)
 	$(PANDOC) $(COMMON_ARGS) $(PANDOC_FILTERS) $< -o $(OUTPUT)/$@
 
-all: sheet[0-9].html sheet_10.html sheet_11.html
+
+%.pdf: $(SRC)/%.md
+	@mkdir -p $(OUTPUT)
+	$(PANDOC) $(COMMON_ARGS) $(PANDOC_FILTERS) $< -o $(OUTPUT)/$@
 
 clean:
 	rm $(OUTPUT)/*
