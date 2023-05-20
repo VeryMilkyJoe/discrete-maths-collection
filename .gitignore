@@ -1,1 +1,4 @@
 book
+node_modules/
+output/
+mermaid-filter.err
