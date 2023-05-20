@@ -365,7 +365,8 @@ a_n - 2 n a_{n-1} + n (n-1) a_{n-2} = 2n \times n! \textit{, } n \geq 2 \textit{
 \end{gather*}
 
 we input the respective generating functions:
-$$
+
+\begin{gather*}
 \hat{A} - a_0 - za_1  - 2z \hat{A} - a_0 + z^2 \hat{A} = 2 \left( \frac{z}{(1-z)^2}  - z \right)
 \end{gather*}
 
