@@ -1,6 +1,9 @@
-# Exercise Sheet 6
+---
+title: Exercise Sheet 6
+---
 
 #### 51) A $t$-ary tree is a plane rooted tree such that every node has either $t$ or $0$ successors. A node with $t$ successors is called internal node.
+
 * How many leaves does a $t$-ary tree with $n$ internal nodes have?
     We can count the number of nodes in our tree by counting all nodes with a parent and the nodes without a parent, the latter simply being the root. Each internal node has to have $t$ children, thus we have:
     $$
@@ -18,16 +21,20 @@
 $$
 a_n = \sum_{n_1, \dots, n_t} a_{n_1} \times \dots \times a_{n_t},
 $$
+
 where $(n_1, \dots, n_t)$ are all possible combinations such that $n_1 + \dots n_t = n-1$
 
 We define $a_0=1$ since there exists exactly one $t-ary$ tree with no internal nodes, namely the one consisting of only the root.
 Then, since $A(z) = \sum_{n \geq 0} a_n z^n$, by definition of generating functions.
 
 Furthermore, we know
+
 $$
 (A(z))^t = (\sum_{n \geq 0} a_{n+1}z^n)^t = \sum_{n \geq 0} c_n z^n,
 $$
+
 where
+
 $$
 c_n = \sum_{n_1 + \dots + n_t = n} a_{n_1} \times \dots \times a_{n_t}
 $$
@@ -38,12 +45,15 @@ We observe that $c_n=a_{n+1}$, hence
 $$
 (A(z))^t = \sum_{n \geq 0} a_{n+1}z^n
 $$
+
 and
+
 $$
 \sum_{n \geq 1} a_n z^{n-1} = \sum_{n \geq 1} a_n z^{n-1} + a_0 - a_0 = \frac{1}{z} \sum_{n \geq 0} a_n z^n - a_0
 $$
 
 Thus, our functional equation for $A(z)$ is defined by:
+
 $$
 (A(z))^t = \frac{A(z)-a_0}{z} \Leftrightarrow (A(z))^t \times z + 1 = A(z)
 $$
@@ -82,20 +92,25 @@ h[label="T", shape=circle]
 Then $t_4 = 1$ and $t_n = \sum_{i+j=n-2} t_i \times t_j$, for $n \geq 4$.
 
 We observe that
+
 $$
 t_{n+2} = \sum_{i+j=n} t_i \times t_j = c_n, \quad n > 2
 $$
+
 where, since,
 
 $$
 (A(z))^2 = \sum_{n > 2} t_{n+2} z^n= A(z) \times A(z) = \sum_{n \geq 0} t_n z^n \times \sum_{n \geq 0} t_n z^n = \sum_{n \geq 0} (\sum_{l=0}^{n} t_l \times t_{n-l})z^n =
 $$
+
 $$
 = \sum_{n \geq 0} (\sum_{i+j=n} t_i \times t_j)z^n = \sum_{n > 2} t_{n+2} z^n =
 $$
+
 $$
 (\sum_{n > 2} t_{n+2} z^n) + t_4 z^2 - t_4 z^2 = (\sum_{n \geq 2} t_{n+2} z^n) - z^2 =
 $$
+
 $$
 = z^{1/2} \sum_{n \geq 2} t_{n+2} z^{n+2}) - z^2 =
 $$
@@ -109,16 +124,21 @@ Then, we have $(A(z))^2 = z^2 A(z) - z^2$, we solve the quadratic equation:
 $$
 A(z) = \frac{1}{2z^2} \pm \sqrt{\frac{1}{4z^4} - z^2}
 $$
+
 refactor to get the same enumerator:
+
 $$
 A(z) = \frac{1-\sqrt{1- 4z^6}}{2z^2}
 $$
+
 where the negative square root denotes a common generating function, thus we substitute
+
 $$
 A(z) = \frac{1}{2z^2} \sum_{n \geq 1} \binom{\frac{1}{2}}{n} (-4^n) z^{6n} =
 $$
 
 we know the $0$th series number is $1$:
+
 $$
 \sum_{n \geq 1} -\frac{1}{2} \binom{1/2}{n} (-4^n) z^{6n -2}
 $$
@@ -133,29 +153,41 @@ we can then define $t_n$
 \end{equation}
 
 #### 53) Compute the number $t_n$ of plane rooted trees with $n$ nodes.
+
 Since we are dealing with plane-rooted trees, left-right order matters, these trees can be described by the root combined with a sequence of subtrees:
+
 $$
 P = \{\circ \} \times seq(P)
 $$
+
 We apply the relevant generating functions:
+
 $$
 P(z) = \frac{z}{1- P(z)}
 $$
+
 we multiply by the denominator
+
 $$
 P(z) - (P(z))^2 = z
 $$
+
 and solve the quadratic equation, taking the positive result as $z_0=0$
+
 $$
 P(z) = \frac{1-\sqrt{1-4z}}{2}
 $$
+
 when comparing this to binary trees, only factor $1/z$ is missing for binary trees, thus we can state that $1/zP(z)$ is equivalent to the generating function for the Catalan numbers.
 
 The number of plane-rooted trees with $n$ nodes can thus be defined by coefficient extraction of the Catalan numbers:
+
 $$
 [z^n]P(z) = [z^{n-1}] C(z) = \frac{1}{n} \binom{2(n-1)}{n-1} \quad \text{, for } n\geq 1
 $$
+
 since
+
 $$
 C_n = \frac{1}{n+1} \binom{2n}{n}
 $$
@@ -182,24 +214,33 @@ g[label="",shape=point, style=invis]
 
 }
 ```
+
 where the words of length $0$ have one possibility and there exist no words of odd length, since exerytime we write $a$, we write a $b$.
 
 We can easily show that the language represented by this grammar can be translated to $D_1$, where $D_1$ is the Dyck language over one set of parentheses, we simply translate $a \rightarrow ($ and $b \rightarrow )$. Since we know that $C_n$ is the number of Dyck words of length $2n$, where $C_n$ is the $n$th catalan number, we can define the number of words in $\mathcal{L}$ with $n$ letters by:
+
 $$
 [z^{n}] D_z = \frac{1}{\frac{n}{2} +1} \binom{n}{\frac{n}{2}}
-$$, for even $n \geq0$
+$$
+
+for even $n \geq0$
 and by $0$ otherwise.
 
 #### 55) Consider a regular $(n+2)$-gon $A$, say, with the vertices $0,1, \dots, n+1$. A triangulation is a decomposition of $A$ into $n$ triangles such that the $3$ vertices of each triangle are vertices of $A$ as well. Show that the set $\mathcal{T}$ of triangulations of regular polygons can be described as a combinatorial construction satisfying
+
 $$
 \mathcal{T} = \{\epsilon\} \cup \mathcal{T} \times \Delta \times \mathcal{T}
 $$
+
 **where $\Delta$ denotes a single triangle and $\epsilon$ denotes the empty triangulation (consisting of no triangle and corresponding to the case $n=0$).**
 
 Order matters here, since we have labelled vertices.
 We have $0$ triangulations for $n=0$, since we then only have 2 vertices.
+
 $$\{\epsilon\}$$
+
 Otherwise, we can split our $(n+2)$-gon into a triangle and the remaining shapes to be triangulated, hence:
+
 $$
 \mathcal{T} \times \Delta \times \mathcal{T}
 $$
@@ -213,18 +254,24 @@ $$
 $$
 \Leftrightarrow T(z) = 1 + zT(z)^2 \Leftrightarrow
 $$
+
 we solve the quadratic equation for $a=z, b = -1, c = 1$:
+
 $$
 T(z)= \frac{1- \sqrt{1-4z}}{2z}
 $$
+
 where we chose the negative solution, since for $n=0$ the number is 0.
 
 This is the closed form of the Catalan numbers.
 Therefore, the number of triangulations of $A$ is computed by:
+
 $$
 [z^n]\sum_{n \geq 0} \frac{1}{n+1} \binom{2n}{n}
 $$
+
 which is
+
 $$
  \frac{1}{n+1} \binom{2n}{n}
 $$
@@ -235,6 +282,7 @@ $$
 * arbitrary number of blue balls: $e^z$
 
 We therefore get:
+
 $$
 (\frac{z^2}{2!} + \frac{z^4}{4!}) \times \frac{1}{2}(e^z + e^{-z}) \times e^z =
 $$
@@ -283,7 +331,9 @@ $$
 $$
 \frac{z^2}{2} + 3 \frac{z^3}{3!} + 13 \frac{z^4}{4!} + \sum_{n \geq 5} \frac{1}{768} (n^2 - 5n + 54) n (n-1) 2^n \frac{z^n}{n!} =
 $$
+
 We therefore get the following numbers for $a_n$:
+
 $$
 a_n = \begin{cases}
 1  &\textit{, if } n = 2 \\
@@ -294,9 +344,11 @@ a_n = \begin{cases}
 $$
 
 #### 57) Determine all solutions of the recurrence relation:
+
 $$
 a_n - 2 n a_{n-1} + n (n-1) a_{n-2} = 2n \times n! \textit{, } n \geq 2 \textit{, } a_0 = a_1 = 1.
 $$
+
 *Hint: Use exponential generating functions.*
 
 $$
@@ -311,9 +363,11 @@ we input the respective generating functions:
 $$
 \hat{A} - a_0 - za_1  - 2z \hat{A} - a_0 + z^2 \hat{A} = 2 \left( \frac{z}{(1-z)^2}  - z \right)
 $$
+
 $$
 \hat{A} - 1 - z  - 2z \hat{A}  + 2z + z^2 \hat{A} = \frac{2z}{(1-z)^2}  - 2z
 $$
+
 $$
 \hat{A} (1-2z+z^2) + 3z - 1 = \frac{2z}{(1-z)^2}
 $$
@@ -370,10 +424,13 @@ $$
 The possible structures of permutations which satisfy the condition $\pi \circ \pi = id_M$, are either 1-cycles, where $\pi(i) = i$ or 2-cycles where $\pi(i) = j$ for some $j \neq i$ and $\pi(j) = i$.
 
 Therefore, $\mathbb{I}$ can be defined as a combinatorial structure:
+
 $$
 \mathcal{I} = set(1cycle(\{\circ\}) + 2cycle(\{\circ\}))
 $$
+
 Hence, $I$ can be computed by:
+
 $$
 exp\left(log(\frac{1}{1-z}) + \frac{1}{2} log(\frac{1}{1-z})^2\right) =
 $$
@@ -386,9 +443,11 @@ $$
 
 
 **Finally, apply the following theorem to prove that the number of trees in $\mathcal{T}$ which have $n$ vertices is equal to $n^{n-1}. (You are not asked to prove the theorem.)**
+
 *Theorem: Let $\Phi(w) = \sum_{n \geq 0} \phi_0 \neq 0$ with $\phi_0 \neq 0$. If $z = w/\Phi(w)$, then $[z^n]w = \frac{1}{n} [w^{n-1}] \Phi(w)^n$*
 
 #### 60) Show the following formula for Stirling numbers of the second kind:
+
 $$
 \sum_{n \geq 0} \sum_{k = 0}^{n} S_{n,k} \frac{z^n}{n!} u^k = e^{u(e^x -1)}
 $$
