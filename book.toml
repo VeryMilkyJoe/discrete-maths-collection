@@ -1,9 +1,0 @@
-[book]
-authors = ["Jana Chadt"]
-language = "en"
-multilingual = false
-src = "src"
-title = "Discrete Mathematics Exercises 2021"
-
-[output.html]
-mathjax-support = true
