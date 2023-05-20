@@ -1,5 +1,7 @@
 {
-  "devDependencies": {
+  "name": "discrete-maths-collection",
+  "version": "1.0.0",
+  "dependencies": {
     "mermaid-filter": "^1.4.6"
   }
 }
