@@ -8,8 +8,8 @@ Requirements:
 
 * `pandoc`
 * `lua-graphviz-filter.lua` which is vendored with this project
-* `mermaid-filter` which can be installed via `npm`
-  * The included `package.json` contains version constraints and can be used via `npm install`
+* `mermaid-filter` which can be installed via `yarn`
+  * The included `package.json` contains version constraints and can be used via `yarn install`
 * `dot` on the `$PATH`
 
 ## Usage
