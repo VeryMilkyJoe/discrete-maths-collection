@@ -18,3 +18,7 @@ OUTPUT=output
 clean:
 	rm $(OUTPUT)/*
 	rm -r $(OUTPUT)
+
+all: $(OUTPUT)/%.html
+
+.PHONY: clean all

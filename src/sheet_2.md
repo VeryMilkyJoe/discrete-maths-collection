@@ -7,65 +7,65 @@ title: Exercise Sheet 2
 We observe that by completeness of $K_n$, its adjacency matrix is the $n \times n$ matrix of ones, similarly its degree matrix is the $n \times n$ matrix with $n$ on its diagonal.
 
 \begin{gather*}
-$D(K_n) = \begin{pmatrix}
+D(K_n) = \begin{pmatrix}
         n & 0 & 0 & \dots \\
         0 & n & 0 &\dots \\
         0 & 0 & n &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
-    \end{pmatrix}$
+    \end{pmatrix}
 \end{gather*}
 
 \begin{gather*}
-$A(K_n) = \begin{pmatrix}
+A(K_n) = \begin{pmatrix}
         1 & 1 & 1 & \dots \\
         1 & 1 & 1 &\dots \\
         1 & 1 & 1 &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
-    \end{pmatrix}$
+    \end{pmatrix}
 \end{gather*}
 
 We can thus see that $L(K_n) = D(K_n) - A(K_n)$ is defined as follows:
 
 \begin{gather*}
-$L(K_n) = \begin{pmatrix}
+L(K_n) = \begin{pmatrix}
         n-1 & -1 & -1 & \dots \\
         -1 & n-1 & -1 &\dots \\
         -1 & -1 & n-1 &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
-    \end{pmatrix}$
+    \end{pmatrix}
 \end{gather*}
 
 We then delete the first row and column from $L(K_n)$ to get a new $n-1 \times n-1$ matrix $L_1$.
 
 \begin{gather*}
-$L_1(K_n) = \begin{pmatrix}
+L_1(K_n) = \begin{pmatrix}
         1 & 1 & 1 & \dots \\
         -1 & n-1 & -1 &\dots \\
         -1 & -1 & n-1 &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
-    \end{pmatrix}$
+    \end{pmatrix}
 \end{gather*}
 
 We can then add all other rows to the first row. We observe that each column in the resulting matrix $L_1(K_n)'$ contains exactly $n-2$ negative ones and one $n-2$ entry, thus the value in each column of row 1 is defined by $n-1-n-2 = 1$.
 
 \begin{gather*}
-$L_1(K_n)' = \begin{pmatrix}
+L_1(K_n)' = \begin{pmatrix}
         n-1 & -1 & -1 & \dots \\
         -1 & n-1 & -1 &\dots \\
         -1 & -1 & n-1 &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
-    \end{pmatrix}$
+    \end{pmatrix}
 \end{gather*}
 
 We can then derive the matrix $L_1(K_n)''$ by adding the first row to each other row.
 
 \begin{gather*}
-$L_1(K_n)'' = \begin{pmatrix}
+L_1(K_n)'' = \begin{pmatrix}
         1 & 1 & 1 & \dots \\
         0 & n & 0 &\dots \\
         0 & 0 & n &\dots \\
         \vdots & \vdots & \vdots & \ddots & \\
-    \end{pmatrix}$
+    \end{pmatrix}
 \end{gather*}
 
 We observe that, $L_1(K_n)''$ is an upper triangular matrix and the determinant is thus calculated by $det(L_1(K_n)'')= l_{11} \times l_{22} \times \dots l_{n-1 \ n-1} = 1 \times n^{n-2} = n-2$.
@@ -76,7 +76,7 @@ We observe that, $L_1(K_n)''$ is an upper triangular matrix and the determinant 
 
 --Proof by induction--
 
-* Base case: 2 leaves, no internal nodes :heavy_check_mark:
+* Base case: 2 leaves, no internal nodes $\checkmark$
 
     ```graphviz
         graph G {
