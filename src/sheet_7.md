@@ -278,7 +278,6 @@ Then, $n = 2 \cdot 3 \cdot 7 = 42$.
 
 We first compute the division chain:
 
-\begin{gather*}
 \begin{align}
 2863 &= 1057 \cdot 2 + 749 \\
 1057 &= 749 \cdot 1 + 308 \\
@@ -287,29 +286,24 @@ We first compute the division chain:
 133 &= 42 \cdot 3 + 7 \\
 42 &= 7 \cdot 6 + 0
 \end{align}
-\end{gather*}
 
 We then find the linear combination for $2863$ and $1057$:
 
-\begin{gather*}
 \begin{align}
 42 &= 308 - (133 \cdot 2) \\
-42 &= 308 - ((749 - 308 \cdot 2) \cdot 2) = 308 \cdot 5 - 749 \cdot 2\\
-42 &= (1057 - 749 \cdot 1) \cdot 5 - 749 \cdot 2 = 1057 \cdot 5 - 749 \cdot 7
+42 &= 308 - ((749 - 308 \cdot 2) \cdot 2) = 308 \cdot 5 - 749 \cdot 2 \\
+42 &= (1057 - 749 \cdot 1) \cdot 5 - 749 \cdot 2 = 1057 \cdot 5 - 749 \cdot 7 \\
 42 &= 1057 \cdot 5 - (2863 - 1057 \cdot 2) \cdot 7 = 1057 \cdot 19 - 2863 \cdot 7
 \end{align}
-\end{gather*}
 
 Thus we have found $a = -7$ and $b = 19$ which satisfy the equation.
 
 #### 70) Use the Euclidian algorithm to find all the greatest common divisors of $x^3 + 5x^2 + 7x + 3$ and $x^3 + x^2 - 5x +3$ in $\mathbb{Q}[x]$.
 
-\begin{gather*}
 \begin{align}
-x^3 + 5x^2 + 7x + 3 = 1 \cdot (x^3 + x^2 - 5x + 3) + (4x^2 + 12x)
-x^3 + x^2 - 5x + 3 = (4x^2 + 12x) \cdot (1/4 x - 1/2) + (x+3)
-4x^2 + 12x = (x+3) \cdot (4x) + 0
+x^3 + 5x^2 + 7x + 3 &= 1 \cdot (x^3 + x^2 - 5x + 3) + (4x^2 + 12x) \\
+x^3 + x^2 - 5x + 3 &= (4x^2 + 12x) \cdot (1/4 x - 1/2) + (x+3) \\
+4x^2 + 12x &= (x+3) \cdot (4x) + 0
 \end{align}
-\end{gather*}
 
 Thus, forall $x \in \mathbb{Q}^x: a \cdot x + 3 \cdot a$ is a gcd of $x^3 + 5x^2 + 7x + 3$ and $x^3 + x^2 - 5x +3$.
