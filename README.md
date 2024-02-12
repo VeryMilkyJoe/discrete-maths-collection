@@ -1,4 +1,7 @@
-# discrete-maths-collection
+# Discrete Maths Collection
+
+This is a collection of discrete mathematics exercises from the TU Vienna course of the same name, with detailed solutions. 
+The rendered pdfs can be found [here](https://sh1.fsinf.at/~prawn/).
 
 ## Installation
 
